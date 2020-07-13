@@ -6,26 +6,27 @@ import { AppComponent } from './app.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { HeaderComponent } from './components/header/header.component';
 
-// ADD ANGULAR MATERIAL
-import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './components/material-module.ts/material-module.ts.module';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListUserComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
 
-    MatSliderModule,
-
-    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,9 @@
-export interface Profesional {
+import { User } from './user.type';
 
-    nColegiado: number,
-    profesion: "MEDICO" | "ENFERMERO" | "ADMINISTRADOR",//Profesion,
-    aseguradora: TipoAseguradora
+export interface Profesional extends User {
+
+    nColegiado: number;
+    profesionalType: ProfesionalType;
+    aseguradora: InsurerType;
 
 }

@@ -1,4 +1,4 @@
-enum Profesion {
+enum ProfesionalType {
     MEDICO,
     ENFERMERO,
     ADMINISTRADOR

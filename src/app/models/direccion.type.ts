@@ -1,7 +1,7 @@
-export interface Direccion {
-    calle: string;
-    numero: string;
-    puerta: string;
-    codigoPostal: number;
-    ciudad: string;
+export interface Address {
+    street: string;
+    number: string;
+    door: string;
+    codePostal: number;
+    city: string;
 }
