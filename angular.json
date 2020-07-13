@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "proyecto-geekshubs"
+    }
+  },
+  "defaultProject": "proyecto-geekshubs",
+  "cli": {
+    "analytics": false
+  }
 }
