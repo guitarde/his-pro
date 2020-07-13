@@ -1,17 +1,19 @@
-import { Paciente } from './paciente.type';
+import { Patient } from './paciente.type';
 import { Profesional } from './profesional.type';
-import { Address } from './direccion.type';
+import { Address } from './address.type';
 export interface User {
 
+    _id: number;
     name: string;
     surName: string;
-    lastName: string;
-    genero: string;
-    birthDate: string;
-    nifPassport: string;
+    lastName?: string;
+    genero?: string;
+    birthDate?: string;
+    identification?: string;
 
-    addres: Address;
+    addres?: Address;
 
-    paciente: Paciente;
-    profesional: Profesional;
+    patient?: Patient;
+    profesional?: Profesional;
+
 }

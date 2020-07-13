@@ -1,7 +1,8 @@
+import { InsurerType } from './enum/insurer.enum';
 
 
-export interface Aseguradora {
-    nombre: string;
-    tipo: TipoAseguradora;
-    numeroTarjeta: number;
+export interface Insurer {
+    insurerName: string;
+    insurerType: InsurerType;
+    numberTarjeta: number;
 }

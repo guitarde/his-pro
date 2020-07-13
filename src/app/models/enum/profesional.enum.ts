@@ -1,4 +1,4 @@
-enum ProfesionalType {
+export enum ProfesionalType {
     MEDICO,
     ENFERMERO,
     ADMINISTRADOR

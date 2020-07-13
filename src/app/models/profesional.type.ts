@@ -1,9 +1,11 @@
-import { User } from './user.type';
 
-export interface Profesional extends User {
+import { ProfesionalType } from './enum/profesional.enum';
+import { Insurer } from './aseguradora.type';
+
+export interface Profesional {
 
     nColegiado: number;
     profesionalType: ProfesionalType;
-    aseguradora: InsurerType;
+    insurer: Insurer;
 
 }

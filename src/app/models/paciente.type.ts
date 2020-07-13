@@ -1,5 +1,5 @@
 import { User } from './user.type';
-export interface Paciente extends User {
-    nch: string;
+export interface Patient  {
 
+    nch: number;
 }
