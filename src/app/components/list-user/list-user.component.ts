@@ -25,7 +25,8 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.data = this._userService.getAllUsers();
+    this._userService.getAllUsers()
+      .subscribe((resp: any) => this.dataSource.data = resp);
   }
 
   typeUserColor(user: User) {
@@ -47,7 +48,7 @@ export class ListUserComponent implements OnInit {
    * @param user each user values
    */
 
-  valuteTypeUser(user: User) {
+  evaluteTypeUser(user: User) {
 
     return typeof user.patient === 'object' ? 'Patient' : 'Profesional';
   }

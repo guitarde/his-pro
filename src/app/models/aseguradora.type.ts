@@ -1,8 +1,8 @@
-import { InsurerType } from './enum/insurer.enum';
 
+type InsurerType = 'SALUD' | 'FAMILIAR' | 'DENTAL';
 
 export interface Insurer {
     insurerName: string;
     insurerType: InsurerType;
-    numberTarjeta: number;
+    cardNumber: number;
 }

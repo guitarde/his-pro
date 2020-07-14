@@ -1,6 +1,7 @@
-import { Patient } from './paciente.type';
+import { Patient } from './patient.type';
 import { Profesional } from './profesional.type';
 import { Address } from './address.type';
+
 export interface User {
 
     _id: number;

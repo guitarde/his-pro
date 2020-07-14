@@ -12,6 +12,7 @@ import { UserComponent } from './components/user/user.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
 import { UserTypePipe } from './pipes/user-type.pipe';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, RouterModule,
-    MaterialModule
+    MaterialModule, HttpClientModule
 
   ],
   providers: [
