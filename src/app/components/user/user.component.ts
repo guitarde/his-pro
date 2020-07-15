@@ -4,6 +4,8 @@ import { User } from '../../models/user.type';
 import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MessageComponent } from '../dialog/message/message.component';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -41,13 +43,13 @@ export class UserComponent implements OnInit {
     }
   };
 
-  constructor(private _userverService: UserService, private _snackBar: MatSnackBar, private _router: Router) {
+  constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
+    private _router: Router, private dialog: MatDialog) {
 
     if (this._router.getCurrentNavigation().extras.state?.type === 'edit') {
       this.user = this._router.getCurrentNavigation().extras.state?.user;
       this.title = 'Edit';
       this.editUser = true;
-      console.log('Editando...');
     }
   }
   ngOnInit(): void {
@@ -63,16 +65,19 @@ export class UserComponent implements OnInit {
 
     if (this.editUser) {
       this._userverService.editUser(this.user)
-        .subscribe();
-
+        .subscribe(() => {
+          this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
+          this.messageDialog('Successful user editing');
+        });
     } else {
       this._userverService.newUser(this.user)
-        .subscribe();
+        .subscribe(() => {
+          this.messageDialog('User successfully added');
+          this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
+        });
     }
 
   }
-
-
 
   getTypeProfesional() {
     return ['DOCTOR', 'NURSE', 'ADMIN'];
@@ -96,4 +101,18 @@ export class UserComponent implements OnInit {
       duration: 2000,
     });
   }
+
+  messageDialog(message: string) {
+    this.dialog.open(MessageComponent, {
+      data: message
+    });
+  }
+
+  /**
+   * Metho que comprueba que typo de usuarios es en el momento de realizar una edicion de usuairo
+   */
+
+   evaluateTypeUser(user: User){
+     
+   }
 }

@@ -19,13 +19,12 @@ export class ListUserComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'surName', 'lastname', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
 
   dataSource = new MatTableDataSource<User>();
+  valueFindUser = '';
 
-
-  value = '';
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(private _userService: UserService, private _router: Router,
-    public dialog: MatDialog) { }
+    private dialog: MatDialog) { }
 
 
   ngOnInit() {
@@ -64,7 +63,7 @@ export class ListUserComponent implements OnInit {
 
 
   addUser() {
-    this._router.navigate(['/users/news'], { state: { type: 'new' } });
+    this._router.navigate(['/users/new']);
   }
 
   findUser(criteria: string) {

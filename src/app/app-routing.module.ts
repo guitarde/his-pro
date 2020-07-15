@@ -9,9 +9,9 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 const routes: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: 'users', component: ListUserComponent, data: { titulo: 'User', description: 'List of Users' } },
+  { path: 'users/new', component: UserComponent, data: { titulo: 'New User', description: 'Create a new user' } },
   { path: 'users/:id', component: UserDetailComponent, data: { titulo: 'Detail User', description: 'Details of a User' } },
   { path: 'users/:id/edit', component: UserComponent, data: { titulo: 'Edit User', description: 'Edition of a User' } },
-  { path: 'users/new', component: UserComponent, data: { titulo: 'New User', description: 'Create a new user' } },
   { path: '**', component: NopagefoundComponent }
 
 ];

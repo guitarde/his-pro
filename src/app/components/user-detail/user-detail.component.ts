@@ -9,14 +9,12 @@ import { Router } from '@angular/router';
 })
 export class UserDetailComponent implements OnInit {
 
- 
   user: User;
 
-  constructor(private _router: Router) { 
-   // this._router.snapshot.paramMap.get('user');
+  constructor(public _router: Router) {
 
-   this.user = this._router.getCurrentNavigation().extras.state?.user;
-
+    this.user = this._router.getCurrentNavigation().extras.state?.user;
+    console.log(this.user);
   }
 
   ngOnInit(): void {

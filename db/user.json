@@ -1,105 +1,6 @@
 {
   "users": [
     {
-      "id": 7,
-      "name": "Luis 7",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "patient": {
-        "nch": 123456,
-        "insurer": {
-          "insurername": "SANITAS",
-          "insurerType": "DENTAL",
-          "cardNumber": 987655664
-        }
-      }
-    },
-    {
-      "id": 9,
-      "name": "Luis 9",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "patient": {
-        "nch": 123456,
-        "insurer": {
-          "insurername": "SANITAS",
-          "insurerType": "SALUD",
-          "cardNumber": 987655664
-        }
-      }
-    },
-    {
-      "id": 10,
-      "name": "Luis 10",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "profesional": {
-        "nColegiado": 23434,
-        "profesionalType": "MEDICO"
-      }
-    },
-    {
-      "id": 11,
-      "name": "Luis 11",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "profesional": {
-        "nColegiado": 23434,
-        "profesionalType": "MEDICO"
-      }
-    },
-    {
-      "id": 11,
-      "name": "Luis 11",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "profesional": {
-        "nColegiado": 23434,
-        "profesionalType": "ODCTOR"
-      }
-    },
-    {
-      "name": "Luis 11",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "profesional": {
-        "nColegiado": 23434,
-        "profesionalType": "ODCTOR"
-      },
-      "id": 12
-    },
-    {
-      "id": 15,
-      "name": "Luis 11",
-      "surname": "Reyna",
-      "lastname": "Chávez",
-      "identification": "54456779F",
-      "birthDate": "27-07-1996",
-      "genero": "H",
-      "profesional": {
-        "nColegiado": 23434,
-        "profesionalType": "ODCTOR"
-      }
-    },
-    {
       "id": 17,
       "name": "Julios",
       "surname": "cesar",
@@ -124,11 +25,12 @@
       },
       "lastName": "pnce",
       "identification": "3456789",
-      "birthDate": "2020-07-14T22:00:00.000Z"
+      "birthDate": "2020-07-14T22:00:00.000Z",
+      "genero": "W"
     },
     {
       "id": 18,
-      "name": "33",
+      "name": "33aaa",
       "surname": "3333",
       "address": {
         "city": "Madrid",
@@ -150,32 +52,34 @@
         "profesionalType": ""
       },
       "lastName": "333",
-      "birthDate": "2020-07-22T22:00:00.000Z"
+      "birthDate": "2020-07-21T22:00:00.000Z",
+      "genero": "W"
     },
     {
       "id": 19,
-      "name": "dufkydtsre",
-      "surname": "taretaert",
+      "name": "cur",
+      "surname": "cursur",
       "address": {
         "city": "Madrid",
         "street": "Barcelona",
         "number": "699",
         "door": "6",
-        "codePostal": "666"
+        "codePostal": "9999"
       },
       "patient": {
         "nch": "42355345324",
         "insurer": {
           "cardNumber": "",
           "insurerName": "",
-          "insurerType": ""
+          "insurerType": "DENTAL"
         }
       },
       "profesional": {
         "nColegiado": "",
         "profesionalType": ""
       },
-      "lastName": "eraertae"
+      "lastName": "curlas",
+      "genero": "H"
     },
     {
       "id": 20,
@@ -232,6 +136,32 @@
       "lastName": "sf",
       "birthDate": "2020-07-28T22:00:00.000Z",
       "identification": "435678"
+    },
+    {
+      "id": 22,
+      "name": "gorila",
+      "surname": "222",
+      "genero": "W",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "patient": {
+        "nch": "2232",
+        "insurer": {
+          "cardNumber": "",
+          "insurerName": "",
+          "insurerType": "DENTAL"
+        }
+      },
+      "profesional": {
+        "nColegiado": "",
+        "profesionalType": ""
+      },
+      "lastName": "222"
     }
   ]
 }
