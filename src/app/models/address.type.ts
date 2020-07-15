@@ -1,7 +1,7 @@
 export interface Address {
-    street: string;
-    number: string;
-    door: string;
-    codePostal: number;
-    city: string;
+    street?: string;
+    number?: string;
+    door?: string;
+    codePostal?: string;
+    city?: string;
 }

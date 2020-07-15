@@ -39,7 +39,7 @@ export class ListUserComponent implements OnInit {
   }
 
   typeUserColor(user: User) {
-    return typeof user.patient === 'object' ? 'accent' : 'primary';
+    return this.evaluteTypeUser(user) === 'Patient' ? 'accent' : 'primary';
   }
 
 
@@ -59,23 +59,18 @@ export class ListUserComponent implements OnInit {
 
   evaluteTypeUser(user: User) {
 
-    return typeof user.patient === 'object' ? 'Patient' : 'Profesional';
+    return 'patient' in user && user.patient.nch.length > 0 ? 'Patient' : 'Profesional';
   }
 
 
   addUser() {
-    this._router.navigate(['/users/new']);
-    console.log("Creando nuevo usuario");
+    this._router.navigate(['/users/news'], { state: { type: 'new' } });
   }
 
   findUser(criteria: string) {
     console.log(criteria);
   }
 
-  showUser(user: User) {
-    this._router.navigate([`/users/${user.id}`]);
-
-  }
 
   deleteUser(user: User) {
 
@@ -83,9 +78,16 @@ export class ListUserComponent implements OnInit {
 
   }
 
+
+  showUser(user: User) {
+
+    this._router.navigate([`/users/${user.id}`], { state: { user } });
+
+  }
+
   editUser(user: User) {
 
-    this._router.navigate([`/users/${user.id}/edit`]);
+    this._router.navigate([`/users/${user.id}/edit`], { state: { type: 'edit', user } });
   }
 
   showDialogConfirm(user: User): void {

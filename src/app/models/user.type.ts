@@ -4,15 +4,15 @@ import { Address } from './address.type';
 
 export interface User {
 
-    _id: number;
+    id?: number;
     name: string;
-    surName: string;
+    surname: string;
     lastName?: string;
     genero?: string;
     birthDate?: string;
     identification?: string;
 
-    addres?: Address;
+    address?: Address;
 
     patient?: Patient;
     profesional?: Profesional;

@@ -52,7 +52,7 @@
             <!-- Birth Column -->
             <ng-container matColumnDef="birthDate">
                 <th mat-header-cell *matHeaderCellDef> Birth Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.birthDate | date:'yyyy'}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.birthDate | date:'dd MMM yyyy'}} </td>
             </ng-container>
             <!-- User Column -->
             <ng-container matColumnDef="typeUser">
@@ -72,7 +72,7 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button class="button" (click)="messageDialog()" mat-menu-item>
+                        <button class="button" (click)="showUser(element)" mat-menu-item>
                             <mat-icon>info</mat-icon>
                             <span>info</span>
                         </button>

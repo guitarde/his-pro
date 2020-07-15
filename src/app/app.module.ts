@@ -13,6 +13,10 @@ import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component'
 import { UserTypePipe } from './pipes/user-type.pipe';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmComponent } from './components/dialog/confirm/confirm.component';
+import { MessageComponent } from './components/dialog/message/message.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -22,13 +26,17 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     UserComponent,
     NopagefoundComponent,
-    UserTypePipe
+    UserTypePipe,
+    ConfirmComponent,
+    MessageComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, RouterModule,
-    MaterialModule, HttpClientModule
+    MaterialModule, HttpClientModule,
+    FormsModule, ReactiveFormsModule
 
   ],
   providers: [

@@ -1,8 +1,8 @@
-type ProfesionalType = 'MEDICO' | 'ENFERMERO' | 'ADMINISTRADOR';
+type ProfesionalType = '' | 'DOCTOR' | 'NURSER' | 'ADMIN';
 
 export interface Profesional {
 
-    nColegiado: number;
+    nColegiado: string;
     profesionalType: ProfesionalType;
 
 }
