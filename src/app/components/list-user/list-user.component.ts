@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../models/user.type';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { ConfirmComponent } from '../dialog/confirm/confirm.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-user',
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-  displayedColumns: string[] = ['_id', 'name', 'surName', 'lastName', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
+  displayedColumns: string[] = ['id', 'name', 'surName', 'lastName', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
 
   dataSource = new MatTableDataSource<User>();
 
@@ -21,7 +23,24 @@ export class ListUserComponent implements OnInit {
   value = '';
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+  constructor(private _userService: UserService, private _router: Router,
+    public dialog: MatDialog) { }
+
+
+  showDialogConfirm(username: string): void {
+    this.dialog
+      .open(ConfirmComponent, {
+        data: `Do you want to delete the user ${username}?`
+      })
+      .afterClosed()
+      .subscribe((confirmado: boolean) => {
+        if (confirmado) {
+          console.log("¡A mí también!");
+        } else {
+          console.log("Deberías probarlo, a mí me gusta :)");
+        }
+      });
+  }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -64,17 +83,18 @@ export class ListUserComponent implements OnInit {
   }
 
   showUser(user: User) {
-    this._router.navigate([`/users/${user._id}`]);
+    this._router.navigate([`/users/${user.id}`]);
 
   }
 
   deleteUser(user: User) {
     console.log(user);
+    showDialogConfirm(user.name);
 
   }
 
   editUser(user: User) {
 
-    this._router.navigate([`/users/${user._id}/edit`]);
+    this._router.navigate([`/users/${user.id}/edit`]);
   }
 }

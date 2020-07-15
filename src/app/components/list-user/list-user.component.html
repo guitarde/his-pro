@@ -1,5 +1,4 @@
 <div class="container mt-sm-5">
-
     <div class="row">
         <mat-form-field class="form-field-input">
             <mat-label>Find person</mat-label>
@@ -9,7 +8,7 @@
             </button>
         </mat-form-field>
 
-        <button (click)="addUser()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <button class="right" (click)="addUser()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -17,9 +16,9 @@
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
             <!-- ID Column -->
-            <ng-container matColumnDef="_id">
+            <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
             <!-- Name Column -->
             <ng-container matColumnDef="name">
