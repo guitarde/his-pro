@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { ConfirmComponent } from '../dialog/confirm/confirm.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MessageComponent } from '../dialog/message/message.component';
 
 @Component({
   selector: 'app-list-user',
@@ -15,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'surName', 'lastName', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
+  displayedColumns: string[] = ['id', 'name', 'surName', 'lastname', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
 
   dataSource = new MatTableDataSource<User>();
 
@@ -27,22 +28,11 @@ export class ListUserComponent implements OnInit {
     public dialog: MatDialog) { }
 
 
-  showDialogConfirm(username: string): void {
-    this.dialog
-      .open(ConfirmComponent, {
-        data: `Do you want to delete the user ${username}?`
-      })
-      .afterClosed()
-      .subscribe((confirmado: boolean) => {
-        if (confirmado) {
-          console.log("¡A mí también!");
-        } else {
-          console.log("Deberías probarlo, a mí me gusta :)");
-        }
-      });
+  ngOnInit() {
+    this.loadUsers();
   }
 
-  ngOnInit() {
+  loadUsers() {
     this.dataSource.paginator = this.paginator;
     this._userService.getAllUsers()
       .subscribe((resp: any) => this.dataSource.data = resp);
@@ -88,8 +78,8 @@ export class ListUserComponent implements OnInit {
   }
 
   deleteUser(user: User) {
-    console.log(user);
-    showDialogConfirm(user.name);
+
+    this.showDialogConfirm(user);
 
   }
 
@@ -97,4 +87,27 @@ export class ListUserComponent implements OnInit {
 
     this._router.navigate([`/users/${user.id}/edit`]);
   }
+
+  showDialogConfirm(user: User): void {
+    this.dialog
+      .open(ConfirmComponent, {
+        data: `Do you want to delete the user ${user.name}?`
+      })
+      .afterClosed()
+      .subscribe((confirmado: boolean) => {
+        if (confirmado) {
+          this._userService.deleteUser(user.id).subscribe(resp => {
+            this.messageDialog('User delete successfuly');
+            this.loadUsers();
+          });
+        }
+      });
+  }
+
+  messageDialog(message: string) {
+    this.dialog.open(MessageComponent, {
+      data: message
+    });
+  }
+
 }

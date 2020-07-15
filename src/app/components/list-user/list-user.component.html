@@ -31,7 +31,7 @@
                 <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
             </ng-container>
             <!-- LastName Column -->
-            <ng-container matColumnDef="lastName">
+            <ng-container matColumnDef="lastname">
                 <th mat-header-cell *matHeaderCellDef> Last Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
             </ng-container>
@@ -52,7 +52,7 @@
             <!-- Birth Column -->
             <ng-container matColumnDef="birthDate">
                 <th mat-header-cell *matHeaderCellDef> Birth Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.birthDate | date:'yyyy'}} </td>
             </ng-container>
             <!-- User Column -->
             <ng-container matColumnDef="typeUser">
@@ -72,7 +72,7 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button class="button" (click)="showUser(element)" mat-menu-item>
+                        <button class="button" (click)="messageDialog()" mat-menu-item>
                             <mat-icon>info</mat-icon>
                             <span>info</span>
                         </button>
