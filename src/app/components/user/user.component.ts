@@ -21,8 +21,6 @@ export class UserComponent implements OnInit {
   activateTabUserPatient = false;
   activateTabUserProfesional = false;
 
-  selecteTabTypeUser = 0;
-
   user: User = {
     id: 0,
     name: '',
@@ -51,6 +49,15 @@ export class UserComponent implements OnInit {
 
   constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
     private _router: Router, private dialog: MatDialog, private ruteActiva: ActivatedRoute) {
+
+  }
+
+  ngOnInit(): void {
+    this.checkTypeOperations();
+  }
+
+
+  checkTypeOperations() {
     this.ruteActiva.data.subscribe(event => {
       if (event.type === 'edit') {
         this.title = 'Edit user';
@@ -61,11 +68,13 @@ export class UserComponent implements OnInit {
             this.evaluateTypeUser(this.user);
           });
       }
+      if (event.type === 'new') {
+        this.activateTabUserPatient = true;
+        this.activateTabUserProfesional = true;
+      }
+
     });
   }
-
-  ngOnInit(): void { }
-
   saveUser(form: NgForm) {
 
     if (form.invalid) {
@@ -80,6 +89,7 @@ export class UserComponent implements OnInit {
           this.messageDialog('Successful user editing');
         });
     } else {
+      this.hiddelTypeUserTab();
       this._userverService.newUser(this.deleteDataTypeUser(this.user))
         .subscribe(() => {
           this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
@@ -102,9 +112,48 @@ export class UserComponent implements OnInit {
    * Change the value of a properties of input
    * @param typeTabUser index of type tab {Profesional or Patient}
    */
-  typeUserTab(typeTabUser: number) {
-    this.requiredTypeUserTab = typeTabUser === 0 ? true : false;
+  typeUserTab(typeTabUser: number, e) {
+    console.log(e);
+    if (typeTabUser === 0) {
+      this.requiredTypeUserTab = true;
+    } else {
+      this.requiredTypeUserTab = false;
+    }
   }
+
+
+  hiddelTypeUserTab() {
+    if (this.requiredTypeUserTab) {
+      this.activateTabUserPatient = !this.activateTabUserProfesional;
+    } else {
+      this.activateTabUserProfesional = !this.activateTabUserPatient;
+    }
+  }
+
+  /**
+   * Method que comprueba que typo de usuarios es en el momento de realizar una edicion de usuairo
+   */
+
+  evaluateTypeUser(user: User) {
+    if ('patient' in user && user.patient.nch.length > 0) {
+      this.activateTabUserProfesional = !this.activateTabUserPatient;
+    } else {
+      this.activateTabUserPatient = !this.activateTabUserProfesional;
+    }
+  }
+
+  deleteDataTypeUser(user: User) {
+    if ('patient' in user && user.patient.nch.length > 0) {
+      delete user.profesional;
+    } else {
+      delete user.patient;
+    }
+    return user;
+  }
+
+  /**
+   * DIALOGS AND MESSAGE IMPLMENTS CALLS
+   */
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -118,25 +167,6 @@ export class UserComponent implements OnInit {
     });
   }
 
-  /**
-   * Metho que comprueba que typo de usuarios es en el momento de realizar una edicion de usuairo
-   */
+  /** =============================================== */
 
-  evaluateTypeUser(user: User) {
-    if ('patient' in user && user.patient.nch.length > 0) {
-      this.activateTabUserProfesional = !this.activateTabUserPatient;
-    } else {
-      this.activateTabUserPatient = !this.activateTabUserProfesional;
-      this.selecteTabTypeUser = 1;
-    }
-  }
-
-  deleteDataTypeUser(user: User) {
-    if ('patient' in user && user.patient.nch.length > 0) {
-      delete user.profesional;
-    } else {
-      delete user.patient;
-    }
-    return user;
-  }
 }
