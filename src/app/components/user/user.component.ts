@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { User } from '../../models/user.type';
 import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageComponent } from '../dialog/message/message.component';
 @Component({
@@ -17,6 +17,12 @@ export class UserComponent implements OnInit {
   title = 'New User';
   editUser: boolean;
   identificationType: string;
+
+  activateTabUserPatient = false;
+  activateTabUserProfesional = false;
+
+  selecteTabTypeUser = 0;
+
   user: User = {
     id: 0,
     name: '',
@@ -44,14 +50,20 @@ export class UserComponent implements OnInit {
   };
 
   constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
-    private _router: Router, private dialog: MatDialog) {
-
-    if (this._router.getCurrentNavigation().extras.state?.type === 'edit') {
-      this.user = this._router.getCurrentNavigation().extras.state?.user;
-      this.title = 'Edit';
-      this.editUser = true;
-    }
+    private _router: Router, private dialog: MatDialog, private rutaActiva: ActivatedRoute) {
+    this.rutaActiva.data.subscribe(event => {
+      if (event.type === 'edit') {
+        this.title = 'Edit';
+        this.editUser = true;
+        this._userverService.getUserById(this.rutaActiva.snapshot.params.id)
+          .subscribe((resp: any) => {
+            this.user = resp;
+            this.evaluateTypeUser(this.user);
+          });
+      }
+    });
   }
+
   ngOnInit(): void {
 
   }
@@ -112,7 +124,12 @@ export class UserComponent implements OnInit {
    * Metho que comprueba que typo de usuarios es en el momento de realizar una edicion de usuairo
    */
 
-   evaluateTypeUser(user: User){
-     
-   }
+  evaluateTypeUser(user: User) {
+    if ('patient' in user && user.patient.nch.length > 0) {
+      this.activateTabUserProfesional = !this.activateTabUserPatient;
+    } else {
+      this.activateTabUserPatient = !this.activateTabUserProfesional;
+      this.selecteTabTypeUser = 1;
+    }
+  }
 }

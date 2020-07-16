@@ -5,7 +5,7 @@
         <mat-card-content class="mt-sm-5">
             <form #form="ngForm" (ngSubmit)="saveUser(form)" class="example-form" autocomplete="off">
                 <div class="form-group data-personal">
-                    <h4>Personal Data</h4><br>
+                    <h4>Personal information</h4><br>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -101,9 +101,9 @@
                     </div>
                 </mat-card-content>
                 <!-- Type of users -->
-                <mat-tab-group dynamicHeight mat-stretch-tabs class="container example-stretched-tabs mat-elevation-z4" (selectedIndexChange)="typeUserTab($event)">
+                <mat-tab-group selectedIndex="{{ selecteTabTypeUser }}" dynamicHeight mat-stretch-tabs class="container example-stretched-tabs mat-elevation-z4" (selectedIndexChange)="typeUserTab($event)">
                     <!-- Patient -->
-                    <mat-tab label="Patient">
+                    <mat-tab label="Patient" disabled="{{activateTabUserPatient}}">
                         <div class="form-row mt-sm-3 example-large-box">
                             <div *ngIf="requiredTypeUserTab" class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
@@ -135,7 +135,7 @@
                         </div>
                     </mat-tab>
                     <!-- Profesional -->
-                    <mat-tab active="true" label="Profesional">
+                    <mat-tab disabled="{{activateTabUserProfesional}}" label="Profesional">
                         <div class="form-row mt-sm-3 example-large-box">
                             <div *ngIf="!requiredTypeUserTab" class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">

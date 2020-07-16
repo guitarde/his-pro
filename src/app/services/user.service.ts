@@ -41,4 +41,8 @@ export class UserService {
   }
 
 
+  getUserById(id: number) {
+    const URL = URL_SERVICES + '/users/' + id;
+    return this._httpClient.get(URL);
+  }
 }
