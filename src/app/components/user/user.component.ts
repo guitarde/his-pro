@@ -50,12 +50,12 @@ export class UserComponent implements OnInit {
   };
 
   constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
-    private _router: Router, private dialog: MatDialog, private rutaActiva: ActivatedRoute) {
-    this.rutaActiva.data.subscribe(event => {
+    private _router: Router, private dialog: MatDialog, private ruteActiva: ActivatedRoute) {
+    this.ruteActiva.data.subscribe(event => {
       if (event.type === 'edit') {
-        this.title = 'Edit';
+        this.title = 'Edit user';
         this.editUser = true;
-        this._userverService.getUserById(this.rutaActiva.snapshot.params.id)
+        this._userverService.getUserById(this.ruteActiva.snapshot.params.id)
           .subscribe((resp: any) => {
             this.user = resp;
             this.evaluateTypeUser(this.user);
@@ -64,9 +64,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   saveUser(form: NgForm) {
 
@@ -76,16 +74,16 @@ export class UserComponent implements OnInit {
     }
 
     if (this.editUser) {
-      this._userverService.editUser(this.user)
+      this._userverService.editUser(this.deleteDataTypeUser(this.user))
         .subscribe(() => {
           this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
           this.messageDialog('Successful user editing');
         });
     } else {
-      this._userverService.newUser(this.user)
+      this._userverService.newUser(this.deleteDataTypeUser(this.user))
         .subscribe(() => {
-          this.messageDialog('User successfully added');
           this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
+          this.messageDialog('User successfully added');
         });
     }
 
@@ -131,5 +129,14 @@ export class UserComponent implements OnInit {
       this.activateTabUserPatient = !this.activateTabUserProfesional;
       this.selecteTabTypeUser = 1;
     }
+  }
+
+  deleteDataTypeUser(user: User) {
+    if ('patient' in user && user.patient.nch.length > 0) {
+      delete user.profesional;
+    } else {
+      delete user.patient;
+    }
+    return user;
   }
 }

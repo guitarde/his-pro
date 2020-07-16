@@ -103,25 +103,25 @@
                 <!-- Type of users -->
                 <mat-tab-group selectedIndex="{{ selecteTabTypeUser }}" dynamicHeight mat-stretch-tabs class="container example-stretched-tabs mat-elevation-z4" (selectedIndexChange)="typeUserTab($event)">
                     <!-- Patient -->
-                    <mat-tab label="Patient" disabled="{{activateTabUserPatient}}">
+                    <mat-tab label="Patient" *ngIf="activateTabUserProfesional" disabled="{{activateTabUserPatient}}">
                         <div class="form-row mt-sm-3 example-large-box">
                             <div *ngIf="requiredTypeUserTab" class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>History Clinic Number</mat-label>
-                                    <input [required]="requiredTypeUserTab" matInput type="text" [class.is-invalid]="nch.invalid && nch.touched" [(ngModel)]="user.patient.nch" name="nch" #nch="ngModel">
+                                    <input [required]="requiredTypeUserTab" matInput type="text" [class.is-invalid]="nch.invalid && nch.touched" [(ngModel)]=user.patient.nch name="nch" #nch="ngModel">
                                 </mat-form-field>
                                 <small *ngIf="nch.invalid && nch.touched" class="form-text text-danger">NHC is required</small>
                             </div>
                             <div class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>Insurer Name</mat-label>
-                                    <input matInput type="text" [(ngModel)]="user.patient.insurer.insurerName" name="insurerName" #insurerName="ngModel">
+                                    <input matInput type="text" [(ngModel)]=user.patient.insurer.insurerName name="insurerName" #insurerName="ngModel">
                                 </mat-form-field>
                             </div>
                             <div class="form-group col-md-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Type Insurer</mat-label>
-                                    <mat-select name="typeInsurer" [(ngModel)]="user.patient.insurer.insurerType">
+                                    <mat-select name="typeInsurer" [(ngModel)]=user.patient.insurer.insurerType>
                                         <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}">{{value}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -129,15 +129,15 @@
                             <div class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>Card Number</mat-label>
-                                    <input matInput type="text" [(ngModel)]="user.patient.insurer.cardNumber" name="cardnumber" #cardnumber="ngModel">
+                                    <input matInput type="text" [(ngModel)]=user.patient.insurer.cardNumber name="cardnumber" #cardnumber="ngModel">
                                 </mat-form-field>
                             </div>
                         </div>
                     </mat-tab>
                     <!-- Profesional -->
-                    <mat-tab disabled="{{activateTabUserProfesional}}" label="Profesional">
+                    <mat-tab disabled="{{activateTabUserProfesional}}" *ngIf="activateTabUserPatient" label="Profesional">
                         <div class="form-row mt-sm-3 example-large-box">
-                            <div *ngIf="!requiredTypeUserTab" class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>Number Colegiado</mat-label>
                                     <input [required]="!requiredTypeUserTab" matInput type="text" type="text" [class.is-invalid]="nColegiado.invalid && nColegiado.touched" [(ngModel)]="user.profesional.nColegiado" name="nColegiado" #nColegiado="ngModel">
@@ -148,7 +148,7 @@
                             <div class="form-group col-md-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Type Unserer</mat-label>
-                                    <mat-select name="typeInsurrer" [(ngModel)]="user.profesional.profesionalType">
+                                    <mat-select name="typeInsurrer" [(ngModel)]=user.profesional.profesionalType>
                                         <mat-option *ngFor="let value of getTypeProfesional()" value="{{value}}">{{value}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
