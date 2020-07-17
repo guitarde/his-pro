@@ -33,8 +33,15 @@ export class ListUserComponent implements OnInit {
 
   loadUsers() {
     this.dataSource.paginator = this.paginator;
-    this._userService.getAllUsers()
+    this.requestAllUsers()
       .subscribe((resp: any) => this.dataSource.data = resp);
+  }
+
+  /**
+   * Reauest to service to rertrieve all users
+   */
+  requestAllUsers() {
+    return this._userService.getAllUsers();
   }
 
   typeUserColor(user: User) {
@@ -50,26 +57,24 @@ export class ListUserComponent implements OnInit {
     return genero === 'H' ? 'accent' : 'primary';
   }
 
-
-  /**
-   * check it if a Patient or Professional
-   * @param user each user values
-   */
-
-  evaluteTypeUser(user: User) {
-
-    return 'patient' in user && user.patient.nch.length > 0 ? 'Patient' : 'Profesional';
-  }
-
-
-  addUser() {
-    this._router.navigate(['/users/new']);
-  }
-
   findUser(criteria: string) {
-    console.log(criteria);
-  }
 
+    if (criteria === '') {
+      this.loadUsers();
+      return;
+    }
+
+    let findUser = [];
+    this.requestAllUsers()
+      .subscribe((resp: any) => {
+        resp.filter(data => {
+          if (data.name.toLocaleLowerCase().includes(criteria.toLocaleLowerCase()) || data.identification === criteria) {
+            findUser.push(data);
+          }
+        });
+        this.dataSource.data = findUser;
+      });
+  }
 
   deleteUser(user: User) {
 
@@ -89,6 +94,9 @@ export class ListUserComponent implements OnInit {
     this._router.navigate([`/users/${user.id}/edit`], { state: { type: 'edit', user } });
   }
 
+  /**
+ * DIALOGS AND MESSAGE IMPLMENTS CALLS
+ */
   showDialogConfirm(user: User): void {
     this.dialog
       .open(ConfirmComponent, {
@@ -109,6 +117,22 @@ export class ListUserComponent implements OnInit {
     this.dialog.open(MessageComponent, {
       data: message
     });
+  }
+  /** ==================================== */
+
+  /**
+ * check it if a Patient or Professional
+ * @param user each user values
+ */
+
+  evaluteTypeUser(user: User) {
+
+    return 'patient' in user && user.patient.nch.length > 0 ? 'Patient' : 'Profesional';
+  }
+
+
+  addUser() {
+    this._router.navigate(['/users/new']);
   }
 
 }

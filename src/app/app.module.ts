@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './components/dialog/confirm/confirm.component';
 import { MessageComponent } from './components/dialog/message/message.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     UserTypePipe,
     ConfirmComponent,
     MessageComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

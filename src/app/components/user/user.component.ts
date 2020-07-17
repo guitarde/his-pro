@@ -18,6 +18,9 @@ export class UserComponent implements OnInit {
   editUser: boolean;
   identificationType: string;
 
+  action = '';
+  tabActive = '';
+
   activateTabUserPatient = false;
   activateTabUserProfesional = false;
 
@@ -66,15 +69,20 @@ export class UserComponent implements OnInit {
           .subscribe((resp: any) => {
             this.user = resp;
             this.evaluateTypeUser(this.user);
+            this.action = 'edit';
           });
       }
       if (event.type === 'new') {
         this.activateTabUserPatient = true;
         this.activateTabUserProfesional = true;
       }
-
     });
   }
+
+
+  /**
+   * Method to save a user when he is new or we are editing information
+   */
   saveUser(form: NgForm) {
 
     if (form.invalid) {
@@ -83,14 +91,14 @@ export class UserComponent implements OnInit {
     }
 
     if (this.editUser) {
-      this._userverService.editUser(this.deleteDataTypeUser(this.user))
+      this._userverService.editUser(this.deletePropertyTypeUser(this.user))
         .subscribe(() => {
           this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
           this.messageDialog('Successful user editing');
         });
     } else {
       this.hiddelTypeUserTab();
-      this._userverService.newUser(this.deleteDataTypeUser(this.user))
+      this._userverService.newUser(this.deletePropertyTypeUser(this.user))
         .subscribe(() => {
           this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
           this.messageDialog('User successfully added');
@@ -99,28 +107,25 @@ export class UserComponent implements OnInit {
 
   }
 
-  getTypeProfesional() {
-    return ['DOCTOR', 'NURSE', 'ADMIN'];
-  }
-
-  getTypeInsurer() {
-    return ['HEALTH', 'FAMILY', 'DENTAL'];
-  }
 
 
   /**
    * Change the value of a properties of input
    * @param typeTabUser index of type tab {Profesional or Patient}
    */
-  typeUserTab(typeTabUser: number, e) {
-    console.log(e);
-    if (typeTabUser === 0) {
+  typeUserTab(event) {
+
+    this.requiredTypeUserTab = false;
+    this.tabActive = event.tab.textLabel;
+    if (this.tabActive === 'Patient') {
       this.requiredTypeUserTab = true;
-    } else {
-      this.requiredTypeUserTab = false;
     }
+
   }
 
+  /**
+   * Method that hides a tab when we save a new user.
+   */
 
   hiddelTypeUserTab() {
     if (this.requiredTypeUserTab) {
@@ -142,8 +147,12 @@ export class UserComponent implements OnInit {
     }
   }
 
-  deleteDataTypeUser(user: User) {
-    if ('patient' in user && user.patient.nch.length > 0) {
+  /**
+   * Method to remove a patient or professional property
+   */
+
+  deletePropertyTypeUser(user: User) {
+    if (this.tabActive === 'Patient') {
       delete user.profesional;
     } else {
       delete user.patient;
@@ -169,4 +178,11 @@ export class UserComponent implements OnInit {
 
   /** =============================================== */
 
+  getTypeProfesional() {
+    return ['DOCTOR', 'NURSE', 'ADMIN'];
+  }
+
+  getTypeInsurer() {
+    return ['HEALTH', 'FAMILY', 'DENTAL'];
+  }
 }

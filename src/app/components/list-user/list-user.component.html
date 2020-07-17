@@ -2,7 +2,7 @@
     <div class="row">
         <mat-form-field class="form-field-input">
             <mat-label>Find person</mat-label>
-            <input #input (keyup.enter)="findUser(input.value)" matInput type="text">
+            <input #input (keyup.enter)="findUser(input.value)" matInput type="text" placeholder="Typing and press enter to find">
             <button mat-button *ngIf="valueFindUser" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                 <mat-icon>close</mat-icon>
             </button>
