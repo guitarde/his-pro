@@ -42,6 +42,55 @@
       },
       "lastName": "Clavijo",
       "birthDate": "2020-07-23T22:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Pedro",
+      "surname": "Navaja",
+      "genero": "H",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "patient": [
+        {
+          "nch": "222222",
+          "insurer": {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          }
+        },
+        {
+          "nch": "222222",
+          "insurer": {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          }
+        },
+        {
+          "nch": "222222",
+          "insurer": {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          }
+        },
+        {
+          "nch": "222222",
+          "insurer": {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          }
+        }
+      ],
+      "lastName": "Colorado",
+      "birthDate": "2020-07-21T22:00:00.000Z"
     }
   ]
 }

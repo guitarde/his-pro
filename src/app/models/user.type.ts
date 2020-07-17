@@ -14,7 +14,7 @@ export interface User {
 
     address?: Address;
 
-    patient?: Patient;
+    patient?: Patient[];
     professional?: Professional;
 
 }

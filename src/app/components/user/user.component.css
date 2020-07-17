@@ -34,3 +34,7 @@
 .form-group {
     margin-bottom: 0rem;
 }
+
+.mat-tab-group-dynamic-height .mat-tab-body-content {
+    overflow: auto;
+}

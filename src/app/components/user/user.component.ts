@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageComponent } from '../dialog/message/message.component';
+import { Patient } from '../../models/patient.type';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -24,6 +25,17 @@ export class UserComponent implements OnInit {
   activateTabUserPatient = false;
   activateTabUserProfesional = false;
 
+
+
+  patient: Patient = {
+    nch: '',
+    insurer: {
+      cardNumber: '',
+      insurerName: '',
+      insurerType: ''
+    }
+  };
+
   user: User = {
     id: 0,
     name: '',
@@ -36,19 +48,18 @@ export class UserComponent implements OnInit {
       door: '',
       codePostal: ''
     },
-    patient: {
-      nch: '',
-      insurer: {
-        cardNumber: '',
-        insurerName: '',
-        insurerType: ''
-      }
-    },
+    patient: [{ nch: '',
+    insurer: {
+      cardNumber: '',
+      insurerName: '',
+      insurerType: ''
+    }}],
     professional: {
       nColegiado: '',
       professionalType: ''
     }
   };
+
 
   constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
     private _router: Router, private dialog: MatDialog, private ruteActiva: ActivatedRoute) {
@@ -57,7 +68,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkTypeOperations();
-  }
+   }
 
 
   checkTypeOperations() {
@@ -140,7 +151,7 @@ export class UserComponent implements OnInit {
    */
 
   evaluateTypeUser(user: User) {
-    if ('patient' in user && user.patient.nch.length > 0) {
+    if ('patient' in user) {
       this.activateTabUserProfesional = !this.activateTabUserPatient;
     } else {
       this.activateTabUserPatient = !this.activateTabUserProfesional;
@@ -184,5 +195,15 @@ export class UserComponent implements OnInit {
 
   getTypeInsurer() {
     return ['HEALTH', 'FAMILY', 'DENTAL'];
+  }
+
+  addPatientFields() {
+
+    this.user.patient.push({ nch: '',
+    insurer: {
+      cardNumber: '',
+      insurerName: '',
+      insurerType: ''
+    }});
   }
 }
