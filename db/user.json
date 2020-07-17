@@ -34,11 +34,13 @@
       },
       "patient": {
         "nch": "23",
-        "insurer": {
-          "cardNumber": "12312312",
-          "insurerName": "3",
-          "insurerType": "FAMILY"
-        }
+        "insurer": [
+          {
+            "cardNumber": "12312312",
+            "insurerName": "3",
+            "insurerType": "FAMILY"
+          }
+        ]
       },
       "lastName": "Clavijo",
       "birthDate": "2020-07-23T22:00:00.000Z"
@@ -55,42 +57,93 @@
         "door": "",
         "codePostal": ""
       },
-      "patient": [
-        {
-          "nch": "222222",
-          "insurer": {
+      "patient": {
+        "nch": "222222",
+        "insurer": [
+          {
+            "cardNumber": "12",
+            "insurerName": "ddddd",
+            "insurerType": "HEALTH"
+          },
+          {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "DENTAL"
+          },
+          {
             "cardNumber": "",
             "insurerName": "ddddd",
             "insurerType": "FAMILY"
-          }
-        },
-        {
-          "nch": "222222",
-          "insurer": {
-            "cardNumber": "",
+          },
+          {
+            "cardNumber": "ddddd",
             "insurerName": "ddddd",
             "insurerType": "FAMILY"
           }
-        },
-        {
-          "nch": "222222",
-          "insurer": {
-            "cardNumber": "",
-            "insurerName": "ddddd",
-            "insurerType": "FAMILY"
-          }
-        },
-        {
-          "nch": "222222",
-          "insurer": {
-            "cardNumber": "",
-            "insurerName": "ddddd",
-            "insurerType": "FAMILY"
-          }
-        }
-      ],
+        ]
+      },
       "lastName": "Colorado",
       "birthDate": "2020-07-21T22:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Estef",
+      "surname": "Vera",
+      "genero": "W",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "patient": {
+        "nch": "45465786796",
+        "insurer": [
+          {
+            "cardNumber": "sdfds",
+            "insurerName": "11111e",
+            "insurerType": "FAMILY"
+          },
+          {
+            "cardNumber": "34567",
+            "insurerName": "11111",
+            "insurerType": "HEALTH"
+          }
+        ]
+      },
+      "lastName": "Chavez"
+    },
+    {
+      "id": 5,
+      "name": "Juan",
+      "surname": "Torres",
+      "genero": "",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "patient": {
+        "nch": "2323",
+        "insurer": [
+          {
+            "cardNumber": "12",
+            "insurerName": "Pepe",
+            "insurerType": "DENTAL"
+          },
+          {
+            "cardNumber": "",
+            "insurerName": "",
+            "insurerType": ""
+          }
+        ]
+      },
+      "lastName": "Zambrano",
+      "identification": "Luis",
+      "birthDate": "2020-07-14T22:00:00.000Z"
     }
   ]
 }
