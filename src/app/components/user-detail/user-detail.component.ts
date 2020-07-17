@@ -11,7 +11,6 @@ import { UserService } from '../../services/user.service';
 export class UserDetailComponent implements OnInit {
 
   user: User;
-  ocultarEdit = false;
 
   constructor(private _userService: UserService, private ruteActiva: ActivatedRoute) {
 
@@ -23,4 +22,11 @@ export class UserDetailComponent implements OnInit {
       });
   }
 
+  existsPatient() {
+    return 'patient' in this.user;
+  }
+
+  existsProfessional() {
+    return 'professional' in this.user;
+  }
 }
