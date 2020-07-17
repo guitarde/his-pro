@@ -121,13 +121,13 @@ export class ListUserComponent implements OnInit {
   /** ==================================== */
 
   /**
- * check it if a Patient or Professional
- * @param user each user values
- */
+  * check it if a Patient or Professional
+  * @param user each user values
+  */
 
   evaluteTypeUser(user: User) {
 
-    return 'patient' in user && user.patient.nch.length > 0 ? 'Patient' : 'Profesional';
+    return 'patient' in user ? 'Patient' : 'Profesional';
   }
 
 

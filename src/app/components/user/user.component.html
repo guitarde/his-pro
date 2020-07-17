@@ -112,33 +112,36 @@
                         <ng-template mat-tab-label>
                             <mat-icon class="example-tab-icon"></mat-icon>Patient
                         </ng-template>
-                        <div class="form-row mt-sm-3 example-large-box" *ngFor="let patient of user?.patient">
-                            <div *ngIf="requiredTypeUserTab" class="col-md-3">
+                        <div class="form-row mt-sm-3">
+                            <div *ngIf="requiredTypeUserTab" class="col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>History Clinic Number</mat-label>
-                                    <input [required]="activateTabUserPatient" matInput type="text" [class.is-invalid]="nch.invalid && nch.touched" [(ngModel)]=patient.nch name="nch" #nch="ngModel">
+                                    <input [required]="activateTabUserPatient" matInput type="text" [class.is-invalid]="nch.invalid && nch.touched" [(ngModel)]=user.patient.nch name="nch" #nch="ngModel">
                                 </mat-form-field>
                                 <small *ngIf="nch.invalid && nch.touched" class="form-text text-danger">NHC is required</small>
                             </div>
-                            <div class="form-group col-md-3">
-                                <mat-form-field class="form-field-input">
-                                    <mat-label>Insurer Name</mat-label>
-                                    <input matInput type="text" [(ngModel)]=patient.insurer.insurerName name="insurerName" #insurerName="ngModel">
-                                </mat-form-field>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Type Insurer</mat-label>
-                                    <mat-select name="typeInsurer" [(ngModel)]=patient.insurer.insurerType>
-                                        <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}">{{value}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <mat-form-field class="form-field-input">
-                                    <mat-label>Card Number</mat-label>
-                                    <input matInput type="text" [(ngModel)]=patient.insurer.cardNumber name="cardnumber" #cardnumber="ngModel">
-                                </mat-form-field>
+                            <div class="form-row col-12" *ngFor="let insurer of user?.patient.insurer">
+
+                                <div class="form-group col-md-4">
+                                    <mat-form-field class="form-field-input">
+                                        <mat-label> Insurer Name</mat-label>
+                                        <input matInput type="text" [(ngModel)]=insurer.insurerName name="insurerName" #insurerName="ngModel">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Type Insurer</mat-label>
+                                        <mat-select name="typeInsurer" [(ngModel)]=insurer.insurerType>
+                                            <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}">{{value}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <mat-form-field class="form-field-input">
+                                        <mat-label>Card Number</mat-label>
+                                        <input matInput type="text" [(ngModel)]=insurer.cardNumber name="cardnumber" #cardnumber="ngModel">
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
                     </mat-tab>
