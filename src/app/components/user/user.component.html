@@ -120,27 +120,35 @@
                                 </mat-form-field>
                                 <small *ngIf="nch.invalid && nch.touched" class="form-text text-danger">NHC is required</small>
                             </div>
-                            <div class="form-row col-12" *ngFor="let insurer of user?.patient.insurer">
+                            <div class="row col-12" *ngFor="let insurer of user?.patient.insurer; let i = index">
 
                                 <div class="form-group col-md-4">
                                     <mat-form-field class="form-field-input">
                                         <mat-label> Insurer Name</mat-label>
-                                        <input matInput type="text" [(ngModel)]="insurer.insurerName" name="insurerName">
-                                    </mat-form-field>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Type Insurer</mat-label>
-                                        <mat-select name="typeInsurer" [(ngModel)]="insurer.insurerType">
-                                            <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}">{{value}}</mat-option>
-                                        </mat-select>
+                                        <input matInput type="text" [(ngModel)]="insurer.insurerName" name="name-name-{{i}}" #insurerName="ngModel">
                                     </mat-form-field>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <mat-form-field class="form-field-input">
-                                        <mat-label>Card Number</mat-label>
-                                        <input matInput type="text" [(ngModel)]="insurer.cardNumber" name="cardnumber" #cardnumber="ngModel">
+                                        <mat-label> Card Number</mat-label>
+                                        <input matInput type="text" [(ngModel)]="insurer.cardNumber" name="name-card-{{i}}" #cardnumber="ngModel">
                                     </mat-form-field>
+                                </div>
+                                <div class="form-group col-xs-2">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label> Type Insurer</mat-label>
+                                        <mat-select name="name-type-{{i}}" [(ngModel)]="insurer.insurerType">
+                                            <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}"> {{value}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-row">
+
+                                    <div class="form-group col-xs-2">
+                                        <button (click)="removePatientsFields(i)" type="button" class="right" mat-mini-fab color="warning" aria-label="icon button icon">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

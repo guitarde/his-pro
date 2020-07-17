@@ -1,6 +1,5 @@
 <div class="content-detail row">
-    <div>
-
+    <div class="button-options">
         <button class="right" routerLink="/users/new" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
             <mat-icon>add</mat-icon>
         </button>
@@ -43,7 +42,7 @@
         </mat-card>
     </div>
 
-    <div class="col-12" *ngIf=" existsProfessional()">
+    <div class="col-12" *ngIf=" existsProfessional">
         <mat-card>
             <mat-card-subtitle>Profesional information</mat-card-subtitle>
             <div class="row col-12">
@@ -52,10 +51,10 @@
             </div>
         </mat-card>
     </div>
-    <div class="col-12" *ngIf="existsPatient()">
+    <div class="col-12" *ngIf="existsPatient">
         <mat-card>
             <mat-card-subtitle>Patient information</mat-card-subtitle>
-            <h4 class="col-6">NCH: {{ user?.patient?.nch }}</h4>
+            <h3 class="col-6">NCH: {{ user?.patient?.nch }}</h3>
             <div class="row col-12" *ngFor="let insurer of user?.patient.insurer">
                 <h4 class="col-4">Card number: {{insurer?.cardNumber }}</h4>
                 <h4 class="col-4">Name: {{insurer?.insurerName }}</h4>

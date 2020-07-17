@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageComponent } from '../dialog/message/message.component';
+import { Insurer } from '../../models/aseguradora.type';
 
 @Component({
   selector: 'app-user',
@@ -14,6 +15,7 @@ import { MessageComponent } from '../dialog/message/message.component';
 })
 export class UserComponent implements OnInit {
 
+  uniqueId = 1;
   requiredTypeUserTab = true;
   title = 'New User';
   editUser: boolean;
@@ -102,8 +104,8 @@ export class UserComponent implements OnInit {
       this.hiddelTypeUserTab();
       this._userverService.newUser(this.deletePropertyTypeUser(this.user))
         .subscribe(() => {
-          this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
           this.messageDialog('User successfully added');
+          this._router.navigate(['/users']);
         });
     }
   }
@@ -188,11 +190,17 @@ export class UserComponent implements OnInit {
   }
 
   addPatientFields() {
-    this.user.patient.insurer.push({
+    const elementa: Insurer = {
+      // id: this.uniqueId++,
       cardNumber: '',
-      insurerName: 'dfssdfds',
+      insurerName: '',
       insurerType: ''
-    });
+    };
+    this.user.patient.insurer.push(elementa);
+  }
+
+  removePatientsFields(index: number){
+    this.user.patient.insurer.splice(index, 1);
   }
 }
 

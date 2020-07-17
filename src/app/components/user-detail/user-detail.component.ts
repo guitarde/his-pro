@@ -12,6 +12,8 @@ export class UserDetailComponent implements OnInit {
 
   user: User;
 
+  existsPatient: boolean;
+  existsProfessional: boolean;
   constructor(private _userService: UserService, private ruteActiva: ActivatedRoute) {
 
   }
@@ -19,14 +21,8 @@ export class UserDetailComponent implements OnInit {
     this._userService.getUserById(this.ruteActiva.snapshot.params.id)
       .subscribe((resp: any) => {
         this.user = resp;
+        this.existsPatient = 'patient' in this.user;
+        this.existsProfessional = 'professional' in this.user;
       });
-  }
-
-  existsPatient() {
-    return 'patient' in this.user;
-  }
-
-  existsProfessional() {
-    return 'professional' in this.user;
   }
 }

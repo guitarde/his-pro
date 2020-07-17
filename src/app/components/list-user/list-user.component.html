@@ -1,17 +1,15 @@
 <div class="container mt-sm-5">
-    <div class="row">
-        <mat-form-field class="form-field-input">
-            <mat-label>Find person</mat-label>
-            <input #input (keyup.enter)="findUser(input.value)" matInput type="text" placeholder="Typing and press enter to find">
-            <button mat-button *ngIf="valueFindUser" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-form-field class="form-field-input">
+        <mat-label>Find person</mat-label>
+        <input #input (keyup.enter)="findUser(input.value)" matInput type="text" placeholder="Typing and press enter to find">
+        <button mat-button *ngIf="valueFindUser" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                 <mat-icon>close</mat-icon>
             </button>
-        </mat-form-field>
+    </mat-form-field>
 
-        <button class="right" (click)="addUser()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
+    <button class="text-rigtht float-sm-right" (click)="addUser()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
+        <mat-icon>add</mat-icon>
+    </button>
 
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
