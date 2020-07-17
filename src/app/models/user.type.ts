@@ -1,5 +1,5 @@
 import { Patient } from './patient.type';
-import { Profesional } from './profesional.type';
+import { Professional } from './profesional.type';
 import { Address } from './address.type';
 
 export interface User {
@@ -15,6 +15,6 @@ export interface User {
     address?: Address;
 
     patient?: Patient;
-    profesional?: Profesional;
+    professional?: Professional;
 
 }

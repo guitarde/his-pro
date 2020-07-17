@@ -105,7 +105,7 @@
                     <!-- Patient -->
                     <mat-tab label="Patient" *ngIf="activateTabUserProfesional">
                         <ng-template mat-tab-label>
-                            <mat-icon class="example-tab-icon">thumb_up</mat-icon>Patient
+                            <mat-icon class="example-tab-icon"></mat-icon>Patient
                         </ng-template>
                         <div class="form-row mt-sm-3 example-large-box">
                             <div *ngIf="requiredTypeUserTab" class="form-group col-md-6">
@@ -141,13 +141,13 @@
                     <!-- Profesional -->
                     <mat-tab *ngIf="activateTabUserPatient" label="Profesional">
                         <ng-template mat-tab-label>
-                            <mat-icon class="example-tab-icon">thumb_up</mat-icon>Profesional
+                            <mat-icon class="example-tab-icon"></mat-icon>Profesional
                         </ng-template>
                         <div class="form-row mt-sm-3 example-large-box">
                             <div *ngIf="!requiredTypeUserTab" class="form-group col-md-6">
                                 <mat-form-field class="form-field-input">
                                     <mat-label>Number Colegiado</mat-label>
-                                    <input [required]="activateTabUserProfesional" matInput type="text" type="text" [class.is-invalid]="nColegiado.invalid && nColegiado.touched" [(ngModel)]="user.profesional.nColegiado" name="nColegiado" #nColegiado="ngModel">
+                                    <input [required]="activateTabUserProfesional" matInput type="text" type="text" [class.is-invalid]="nColegiado.invalid && nColegiado.touched" [(ngModel)]="user.professional.nColegiado" name="nColegiado" #nColegiado="ngModel">
                                 </mat-form-field>
                                 <small *ngIf="nColegiado.invalid && nColegiado.touched" class="form-text text-danger">Number colegiado is required</small>
                             </div>
@@ -155,7 +155,7 @@
                             <div class="form-group col-md-6">
                                 <mat-form-field appearance="fill">
                                     <mat-label>Type Unserer</mat-label>
-                                    <mat-select name="typeInsurrer" [(ngModel)]=user.profesional.profesionalType>
+                                    <mat-select name="typeInsurrer" [(ngModel)]=user.professional.professionalType>
                                         <mat-option *ngFor="let value of getTypeProfesional()" value="{{value}}">{{value}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>

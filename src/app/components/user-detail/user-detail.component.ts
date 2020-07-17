@@ -11,16 +11,16 @@ import { UserService } from '../../services/user.service';
 export class UserDetailComponent implements OnInit {
 
   user: User;
+  ocultarEdit = false;
 
   constructor(private _userService: UserService, private ruteActiva: ActivatedRoute) {
 
+  }
+  ngOnInit(): void {
     this._userService.getUserById(this.ruteActiva.snapshot.params.id)
       .subscribe((resp: any) => {
         this.user = resp;
       });
-  }
-
-  ngOnInit(): void {
   }
 
 }

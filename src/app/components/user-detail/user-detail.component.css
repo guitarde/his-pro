@@ -1,3 +1,7 @@
 .content-detail {
-    margin: 10px 20px;
+    margin: 8px 18px;
+}
+
+.content-detail div {
+    margin-top: 1rem;
 }

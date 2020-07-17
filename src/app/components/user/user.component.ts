@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   identificationType: string;
 
   action = '';
-  tabActive = '';
+  tabActive = 'Patient';
 
   activateTabUserPatient = false;
   activateTabUserProfesional = false;
@@ -44,9 +44,9 @@ export class UserComponent implements OnInit {
         insurerType: ''
       }
     },
-    profesional: {
+    professional: {
       nColegiado: '',
-      profesionalType: ''
+      professionalType: ''
     }
   };
 
@@ -153,7 +153,7 @@ export class UserComponent implements OnInit {
 
   deletePropertyTypeUser(user: User) {
     if (this.tabActive === 'Patient') {
-      delete user.profesional;
+      delete user.professional;
     } else {
       delete user.patient;
     }
@@ -179,7 +179,7 @@ export class UserComponent implements OnInit {
   /** =============================================== */
 
   getTypeProfesional() {
-    return ['DOCTOR', 'NURSE', 'ADMIN'];
+    return ['DOCTOR', 'NURSE', 'ADMINISTRATIVE'];
   }
 
   getTypeInsurer() {
