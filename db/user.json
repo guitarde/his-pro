@@ -144,6 +144,35 @@
       "lastName": "Zambrano",
       "identification": "Luis",
       "birthDate": "2020-07-14T22:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Sofia",
+      "surname": "SOfia",
+      "genero": "W",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "patient": {
+        "nch": "132323123",
+        "insurer": [
+          {
+            "cardNumber": "3333XXX",
+            "insurerName": "Detal",
+            "insurerType": "DENTAL"
+          },
+          {
+            "cardNumber": "3333",
+            "insurerName": "dfamilia buena",
+            "insurerType": "FAMILY"
+          }
+        ]
+      },
+      "lastName": "Aofia"
     }
   ]
 }

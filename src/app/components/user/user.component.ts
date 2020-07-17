@@ -190,8 +190,20 @@ export class UserComponent implements OnInit {
   addPatientFields() {
     this.user.patient.insurer.push({
       cardNumber: '',
-      insurerName: '',
+      insurerName: 'dfssdfds',
       insurerType: ''
     });
   }
 }
+
+
+/**
+ * <mat-form-field appearance="fill">
+                <mat-label>NIF / DNI</mat-label>
+                <input pattern="[A-Za-z]{3}[0-9]{6}[A-Za-z]|[0-9]{8}[A-Za-z]" matInput name="identification"
+                    [(ngModel)]="user.nif" #identification="ngModel" id="identification">
+
+                <div *ngIf="identification.errors && (newUserFrom.submitted)">
+                    <p *ngIf="identification.errors.pattern">Email must contain at least the @ character</p>
+                </div>
+ */

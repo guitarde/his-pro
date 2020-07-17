@@ -5,7 +5,7 @@
             <mat-icon>add</mat-icon>
         </button>
 
-        <button class="right" *ngIf="ocultarEdit" routerLink="/users/{{user?.id}}/edit" mat-mini-fab color="" aria-label="icon button with a menu icon">
+        <button class="right" routerLink="/users/{{user?.id}}/edit" mat-mini-fab color="" aria-label="icon button with a menu icon">
             <mat-icon>edit</mat-icon>
         </button>
 
@@ -43,7 +43,7 @@
         </mat-card>
     </div>
 
-    <div class="col-12">
+    <div class="col-12" *ngIf=" existsProfessional()">
         <mat-card>
             <mat-card-subtitle>Profesional information</mat-card-subtitle>
             <div class="row col-12">
@@ -52,10 +52,15 @@
             </div>
         </mat-card>
     </div>
-    <div class="col-12">
+    <div class="col-12" *ngIf="existsPatient()">
         <mat-card>
             <mat-card-subtitle>Patient information</mat-card-subtitle>
-            ddggd
+            <h4 class="col-6">NCH: {{ user?.patient?.nch }}</h4>
+            <div class="row col-12" *ngFor="let insurer of user?.patient.insurer">
+                <h4 class="col-4">Card number: {{insurer?.cardNumber }}</h4>
+                <h4 class="col-4">Name: {{insurer?.insurerName }}</h4>
+                <h4 class="col-4">Type: {{insurer?.insurerType }}</h4>
+            </div>
         </mat-card>
     </div>
 </div>
