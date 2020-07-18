@@ -22,15 +22,15 @@
     },
     {
       "id": 2,
-      "name": "Maira",
+      "name": "Luis Antonio Reyna",
       "surname": "CHávex",
       "genero": "W",
       "address": {
-        "city": "",
-        "street": "",
+        "city": "Madrid",
+        "street": "Calle la paz, 1, 1e",
         "number": "",
         "door": "",
-        "codePostal": ""
+        "codePostal": "28100"
       },
       "patient": {
         "nch": "23",
@@ -39,6 +39,11 @@
             "cardNumber": "12312312",
             "insurerName": "3",
             "insurerType": "FAMILY"
+          },
+          {
+            "cardNumber": "",
+            "insurerName": "",
+            "insurerType": ""
           }
         ]
       },
@@ -118,7 +123,7 @@
       "id": 5,
       "name": "Juan",
       "surname": "Torres",
-      "genero": "",
+      "genero": "H",
       "address": {
         "city": "",
         "street": "",
@@ -136,7 +141,7 @@
           },
           {
             "cardNumber": "",
-            "insurerName": "",
+            "insurerName": "po",
             "insurerType": ""
           }
         ]
@@ -173,45 +178,6 @@
         ]
       },
       "lastName": "Aofia"
-    },
-    {
-      "id": 7,
-      "name": "Luis Antonio Reyna",
-      "surname": "kk",
-      "genero": "",
-      "address": {
-        "city": "Madrid",
-        "street": "Calle la paz, 1, 1e",
-        "number": "",
-        "door": "",
-        "codePostal": "28100"
-      },
-      "patient": {
-        "nch": "eeafs",
-        "insurer": [
-          {
-            "cardNumber": "",
-            "insurerName": "fsdgsdfg",
-            "insurerType": "DENTAL"
-          },
-          {
-            "cardNumber": "f",
-            "insurerName": "q",
-            "insurerType": ""
-          },
-          {
-            "cardNumber": "g",
-            "insurerName": "w",
-            "insurerType": ""
-          },
-          {
-            "cardNumber": "h",
-            "insurerName": "e",
-            "insurerType": "FAMILY"
-          }
-        ]
-      },
-      "lastName": "kkk"
     }
   ]
 }
