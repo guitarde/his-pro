@@ -127,7 +127,7 @@ export class ListUserComponent implements OnInit {
 
   evaluteTypeUser(user: User) {
 
-    return 'patient' in user ? 'Patient' : 'Profesional';
+    return 'patient' in user ? 'Patient' : 'Professional';
   }
 
 
