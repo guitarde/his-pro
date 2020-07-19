@@ -57,6 +57,10 @@ export class ListUserComponent implements OnInit {
     return genero === 'H' ? 'accent' : 'primary';
   }
 
+  /**
+   * Method to find a user by name or identification
+   * @param criteria value to find
+   */
   findUser(criteria: string) {
 
     if (criteria === '') {
@@ -64,7 +68,7 @@ export class ListUserComponent implements OnInit {
       return;
     }
 
-    let findUser = [];
+    const findUser = [];
     this.requestAllUsers()
       .subscribe((resp: any) => {
         resp.filter(data => {
@@ -79,14 +83,12 @@ export class ListUserComponent implements OnInit {
   deleteUser(user: User) {
 
     this.showDialogConfirm(user);
-
   }
 
 
   showUser(user: User) {
 
     this._router.navigate([`/users/${user.id}`], { state: { user } });
-
   }
 
   editUser(user: User) {
@@ -95,8 +97,8 @@ export class ListUserComponent implements OnInit {
   }
 
   /**
- * DIALOGS AND MESSAGE IMPLMENTS CALLS
- */
+   * DIALOGS AND MESSAGE IMPLMENTS CALLS
+   */
   showDialogConfirm(user: User): void {
     this.dialog
       .open(ConfirmComponent, {
@@ -121,18 +123,36 @@ export class ListUserComponent implements OnInit {
   /** ==================================== */
 
   /**
-  * check it if a Patient or Professional
-  * @param user each user values
-  */
-
+   * check it if a Patient or Professional
+   * @param user each user values
+   */
   evaluteTypeUser(user: User) {
 
-    return 'patient' in user ? 'Patient' : 'Professional';
+    return 'patient' in user ? 'Patient' : user.professional.professionalType;
   }
 
 
   addUser() {
     this._router.navigate(['/users/new']);
+  }
+
+  /**
+   * Method than delete all user of type DOCTOR.
+   */
+  deleteAllDoctors() {
+    this.dialog
+      .open(ConfirmComponent, {
+        data: 'Do you want to delete all doctos?'
+      })
+      .afterClosed()
+      .subscribe((confirmado: boolean) => {
+        if (confirmado) {
+          this.dataSource.paginator = this.paginator;
+          this._userService.deleteAllDoctors().then(users => {
+            this.dataSource.data = users;
+          });
+        }
+      });
   }
 
 }
