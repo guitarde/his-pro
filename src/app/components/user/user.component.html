@@ -1,0 +1,192 @@
+<div class="container mt-sm-2">
+
+    <mat-card>
+        <mat-card-title>{{ title }}</mat-card-title>
+        <mat-card-content class="mt-sm-5">
+            <form #form="ngForm" (ngSubmit)="saveUser(form)" class="example-form" autocomplete="off">
+                <div class="form-group data-personal">
+                    <h4>Personal information</h4><br>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>Name</mat-label>
+                                <input matInput type="text" required [class.is-invalid]="nameUser.invalid && nameUser.touched" [(ngModel)]="user.name" name="nameUser" #nameUser="ngModel">
+                            </mat-form-field>
+                            <small *ngIf="nameUser.invalid && nameUser.touched" class="form-text text-danger">Name is required</small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>Surname</mat-label>
+                                <input matInput type="text" required [class.is-invalid]="surname.invalid && surname.touched" [(ngModel)]="user.surname" name="surname" #surname="ngModel">
+                            </mat-form-field>
+                            <small *ngIf="surname.invalid && surname.touched" class="form-text text-danger">Surname is required</small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput type="text" required [class.is-invalid]="lastname.invalid && lastname.touched" [(ngModel)]="user.lastName" name="lastname" #lastname="ngModel">
+                            </mat-form-field>
+                            <small *ngIf="lastname.invalid && lastname.touched" class="form-text text-danger">Last name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <h4>Identification</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select [(value)]="identificationType" name="identificationType">
+                                <mat-option value="NIF">NIF</mat-option>
+                                <mat-option value="PASSPORT">PASSPORT</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="form-field-input">
+                            <mat-label>{{ identificationType }}</mat-label>
+                            <input pattern="[A-Za-z]{3}[0-9]{6}[A-Za-z]|[0-9]{8}[A-Za-z]" matInput type="text" [(ngModel)]="user.identification" name="identification" #identification="ngModel">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group col-sm-6 form-group genero">
+                        <h4>Genero</h4>
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="user.genero" #genero name="genero">
+                            <mat-radio-button name="options" color="primary" value="H">MEN</mat-radio-button>
+                            <mat-radio-button name="options" value="W">WOMAN</mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Birth Date</mat-label>
+                            <input matInput [matDatepicker]="dp3" [(ngModel)]="user.birthDate" name="birthDate" #birthDate="ngModel">
+                            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                            <mat-datepicker #dp3></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <mat-card-content class="addres-card">
+                    <h4>Address</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>STREET</mat-label>
+                                <input matInput type="text" [(ngModel)]="user.address.street" name="street" #street="ngModel">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>CITY</mat-label>
+                                <input matInput type="text" [(ngModel)]="user.address.city" name="city" #city="ngModel">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>NUMBER</mat-label>
+                                <input matInput type="text" [(ngModel)]="user.address.number" name="number" #number="ngModel">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>DOOR</mat-label>
+                                <input matInput type="text" [(ngModel)]="user.address.door" name="door" #door="ngModel">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <mat-form-field class="form-field-input">
+                                <mat-label>ZIP</mat-label>
+                                <input matInput type="text" [(ngModel)]="user.address.codePostal" name="codePostal" #codePostal="ngModel">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <!-- Type of users -->
+                <mat-tab-group dynamicHeight mat-stretch-tabs class="container example-stretched-tabs mat-elevation-z4" (selectedTabChange)="typeUserTab($event)">
+                    <!-- Patient -->
+                    <mat-tab label="Patient" *ngIf="activateTabUserProfesional">
+
+                        <button type="button" class="right" (click)="addPatientFields()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
+                            <mat-icon>add</mat-icon>
+                         </button>
+
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon"></mat-icon>Patient
+                        </ng-template>
+                        <div class="form-row mt-sm-3">
+                            <div *ngIf="requiredTypeUserTab" class="col-md-6">
+                                <mat-form-field class="form-field-input">
+                                    <mat-label>History Clinic Number</mat-label>
+                                    <input [required]="activateTabUserPatient" matInput type="text" [class.is-invalid]="nch.invalid && nch.touched" [(ngModel)]=user.patient.nch name="nch" #nch="ngModel">
+                                </mat-form-field>
+                                <small *ngIf="nch.invalid && nch.touched" class="form-text text-danger">NHC is required</small>
+                            </div>
+                            <div class="row col-12" *ngFor="let insurer of user?.patient.insurer; let i = index">
+
+                                <div class="form-group col-md-4">
+                                    <mat-form-field class="form-field-input">
+                                        <mat-label> Insurer Name</mat-label>
+                                        <input matInput type="text" [(ngModel)]="insurer.insurerName" name="name-name-{{i}}" #insurerName="ngModel">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <mat-form-field class="form-field-input">
+                                        <mat-label> Card Number</mat-label>
+                                        <input matInput type="text" [(ngModel)]="insurer.cardNumber" name="name-card-{{i}}" #cardnumber="ngModel">
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-xs-2">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label> Type Insurer</mat-label>
+                                        <mat-select name="name-type-{{i}}" [(ngModel)]="insurer.insurerType">
+                                            <mat-option *ngFor="let value of getTypeInsurer()" value="{{value}}"> {{value}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-row">
+
+                                    <div class="form-group col-xs-2">
+                                        <button (click)="removePatientsFields(i)" type="button" class="right" mat-mini-fab color="warning" aria-label="icon button icon">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <!-- Profesional -->
+                    <mat-tab *ngIf="activateTabUserPatient" label="Profesional">
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon"></mat-icon>Profesional
+                        </ng-template>
+                        <div class="form-row mt-sm-3 example-large-box">
+                            <div *ngIf="!requiredTypeUserTab" class="form-group col-md-6">
+                                <mat-form-field class="form-field-input">
+                                    <mat-label>Number Colegiado</mat-label>
+                                    <input [required]="activateTabUserProfesional" matInput type="text" type="text" [class.is-invalid]="nColegiado.invalid && nColegiado.touched" [(ngModel)]="user.professional.nColegiado" name="nColegiado" #nColegiado="ngModel">
+                                </mat-form-field>
+                                <small *ngIf="nColegiado.invalid && nColegiado.touched" class="form-text text-danger">Number colegiado is required</small>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Type Unserer</mat-label>
+                                    <mat-select name="typeInsurrer" [(ngModel)]=user.professional.professionalType>
+                                        <mat-option *ngFor="let value of getTypeProfesional()" value="{{value}}">{{value}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                </mat-tab-group>
+                <div class="col-md-offset-2 col">
+                    <br>
+                    <button mat-raised-button color="primary">SAVE</button>
+                    <button mat-raised-button routerLink='/'>CANCEL</button>
+
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

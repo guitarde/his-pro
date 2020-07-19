@@ -1,0 +1,40 @@
+.mat-card {
+    max-width: 100%;
+    /* background-color: rgb(110, 114, 109); */
+}
+
+.mat-radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+}
+
+.mat-radio-button {
+    margin: 5px;
+}
+
+.mat-form-field {
+    margin-right: 12px;
+    display: block;
+}
+
+.example-large-box {
+    height: 140px;
+    width: 97%;
+}
+
+.example-stretched-tabs {
+    height: 40%;
+}
+
+.mat-tab {
+    margin-left: 10%;
+}
+
+.form-group {
+    margin-bottom: 0rem;
+}
+
+.mat-tab-group-dynamic-height .mat-tab-body-content {
+    overflow: auto;
+}

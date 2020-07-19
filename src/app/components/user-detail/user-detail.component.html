@@ -1,0 +1,65 @@
+<div class="content-detail row">
+    <div class="button-options">
+        <button class="right" routerLink="/users/new" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <button class="right" routerLink="/users/{{user?.id}}/edit" mat-mini-fab color="" aria-label="icon button with a menu icon">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+    </div>
+    <div class="col-12">
+        <mat-card>
+            <mat-card-subtitle>Personal information</mat-card-subtitle>
+            <div class="row col-12">
+                <p class="col-6">Name: {{ user?.name }} </p>
+                <p class="col-3">Surname: {{ user?.surname }} </p>
+                <p class="col-3">Sexo: {{ user?.genero }}</p>
+
+            </div>
+            <div class="row col-12">
+                <p class="col-6">Lastname: {{ user?.lastName }}</p>
+                <p class="col-6">NIF/PASSPORT: {{ user?.identification }} </p>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="col-12">
+        <mat-card>
+            <mat-card-subtitle>Addres information</mat-card-subtitle>
+            <mat-card-content>
+                <div class="row col-12">
+                    <p class="col-6">Street: {{ user?.address.street }} </p>
+                    <p class="col-3">City: {{ user?.address.city }} </p>
+                    <p class="col-3">DOOR: {{user?.address.door }}</p>
+                </div>
+                <div class="row col-12">
+                    <p class="col-6">Number: {{ user?.address.number }}</p>
+                    <p class="col-6">ZIP: {{ user?.address.codePostal }} </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-12" *ngIf=" existsProfessional">
+        <mat-card>
+            <mat-card-subtitle>Profesional information</mat-card-subtitle>
+            <div class="row col-12">
+                <h4 class="col-6">Nº colegiado: {{ user?.professional?.nColegiado }}</h4>
+                <h4 class="col-6">ROLE: {{user?.professional?.professionalType }}</h4>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-12" *ngIf="existsPatient">
+        <mat-card>
+            <mat-card-subtitle>Patient information</mat-card-subtitle>
+            <h3 class="col-6">NCH: {{ user?.patient?.nch }}</h3>
+            <div class="row col-12" *ngFor="let insurer of user?.patient.insurer">
+                <h4 class="col-4">Card number: {{insurer?.cardNumber }}</h4>
+                <h4 class="col-4">Name: {{insurer?.insurerName }}</h4>
+                <h4 class="col-4">Type: {{insurer?.insurerType }}</h4>
+            </div>
+        </mat-card>
+    </div>
+</div>

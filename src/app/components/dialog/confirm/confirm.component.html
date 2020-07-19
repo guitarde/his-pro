@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>WARNING</h1>
+<div mat-dialog-content>
+    <p>{{message}}</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" cdkFocusInitial>NO</button>
+    <button mat-button (click)="confirmDialog()">YES</button>
+</div>
