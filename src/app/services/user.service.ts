@@ -45,4 +45,12 @@ export class UserService {
     const URL = URL_SERVICES + '/users/' + id;
     return this._httpClient.get(URL);
   }
+
+  deleteAllDoctors() {
+
+    return this.getAllUsers().toPromise().then((usersWithoutDoctor: User[]) => {
+      return usersWithoutDoctor.filter(prof => prof.professional?.professionalType !== 'DOCTOR');
+    });
+
+  }
 }

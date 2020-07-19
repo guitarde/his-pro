@@ -15,7 +15,7 @@ import { Insurer } from '../../models/aseguradora.type';
 })
 export class UserComponent implements OnInit {
 
-  uniqueId = 1;
+
   requiredTypeUserTab = true;
   title = 'New User';
   editUser: boolean;

@@ -7,10 +7,16 @@
             </button>
     </mat-form-field>
 
-    <button class="text-rigtht float-sm-right" (click)="addUser()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
-        <mat-icon>add</mat-icon>
-    </button>
+    <section>
 
+
+        <button class="float-sm-right" (click)="addUser()" mat-mini-fab color="primary" aria-label="icon button with a menu icon">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <button class="float-sm-left" (click)="deleteAllDoctors()" mat-raised-button color="warn">Delete Doctors</button>
+
+    </section>
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
             <!-- ID Column -->
