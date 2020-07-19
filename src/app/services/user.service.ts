@@ -14,7 +14,6 @@ export class UserService {
     this.getAllUsers();
   }
 
-
   /**
    * Retrieve all users.
    */
@@ -22,7 +21,6 @@ export class UserService {
     const URL = URL_SERVICES + '/users';
     return this._httpClient.get(URL);
   }
-
 
   /**
    * Create a new User by type Professional or Patient
@@ -50,12 +48,11 @@ export class UserService {
     const URL = URL_SERVICES + '/users/' + user.id;
     return this._httpClient.put(URL, user);
   }
-  
+
   /**
    * Find users by Id property
    * @param id of users
    */
-
   getUserById(id: number) {
     const URL = URL_SERVICES + '/users/' + id;
     return this._httpClient.get(URL);
