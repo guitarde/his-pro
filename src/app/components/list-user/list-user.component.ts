@@ -83,14 +83,12 @@ export class ListUserComponent implements OnInit {
   deleteUser(user: User) {
 
     this.showDialogConfirm(user);
-
   }
 
 
   showUser(user: User) {
 
     this._router.navigate([`/users/${user.id}`], { state: { user } });
-
   }
 
   editUser(user: User) {

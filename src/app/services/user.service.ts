@@ -14,12 +14,20 @@ export class UserService {
     this.getAllUsers();
   }
 
+
+  /**
+   * Retrieve all users.
+   */
   getAllUsers() {
     const URL = URL_SERVICES + '/users';
     return this._httpClient.get(URL);
   }
 
 
+  /**
+   * Create a new User by type Professional or Patient
+   * @param user data
+   */
   newUser(user: User) {
     const URL = URL_SERVICES + '/users';
     return this._httpClient.post(URL, user);
@@ -34,12 +42,19 @@ export class UserService {
     return this._httpClient.delete(URL);
   }
 
-
+  /**
+   * Editting a user.
+   * @param user data
+   */
   editUser(user: User) {
     const URL = URL_SERVICES + '/users/' + user.id;
     return this._httpClient.put(URL, user);
   }
-
+  
+  /**
+   * Find users by Id property
+   * @param id of users
+   */
 
   getUserById(id: number) {
     const URL = URL_SERVICES + '/users/' + id;
