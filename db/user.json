@@ -178,6 +178,45 @@
         ]
       },
       "lastName": "Aofia"
+    },
+    {
+      "id": 7,
+      "name": "Maria",
+      "surname": "Ceballos",
+      "genero": "W",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "professional": {
+        "nColegiado": "123456789",
+        "professionalType": "DOCTOR"
+      },
+      "lastName": "Ortiz",
+      "identification": "A1225135523",
+      "birthDate": "2020-07-23T22:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "name": "Miguel",
+      "surname": "Villarrolla",
+      "genero": "H",
+      "address": {
+        "city": "",
+        "street": "",
+        "number": "",
+        "door": "",
+        "codePostal": ""
+      },
+      "professional": {
+        "nColegiado": "1231142",
+        "professionalType": "DOCTOR"
+      },
+      "lastName": "Atienza",
+      "identification": "XSD"
     }
   ]
 }
