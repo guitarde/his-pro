@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "proyecto-geekshubs": {
+        "his-pro": {
             "projectType": "application",
             "schematics": {},
             "root": "",
@@ -60,18 +60,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "proyecto-geekshubs:build"
+                        "browserTarget": "his-pro:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "proyecto-geekshubs:build:production"
+                            "browserTarget": "his-pro:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "proyecto-geekshubs:build"
+                        "browserTarget": "his-pro:build"
                     }
                 },
                 "test": {
@@ -109,18 +109,18 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "proyecto-geekshubs:serve"
+                        "devServerTarget": "his-pro:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "proyecto-geekshubs:serve:production"
+                            "devServerTarget": "his-pro:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "proyecto-geekshubs",
+    "defaultProject": "his-pro",
     "cli": {
         "analytics": false
     }
