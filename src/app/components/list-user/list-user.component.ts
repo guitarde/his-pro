@@ -34,7 +34,7 @@ export class ListUserComponent implements OnInit {
   loadUsers() {
     this.dataSource.paginator = this.paginator;
     this.requestAllUsers()
-      .subscribe((resp: any) => this.dataSource.data = resp);
+      .subscribe((resp: User[]) => this.dataSource.data = resp);
   }
 
   /**
@@ -70,7 +70,7 @@ export class ListUserComponent implements OnInit {
 
     const findUser = [];
     this.requestAllUsers()
-      .subscribe((resp: any) => {
+      .subscribe((resp: User[]) => {
         resp.filter(data => {
           if (data.name.toLocaleLowerCase().includes(criteria.toLocaleLowerCase()) || data.identification === criteria) {
             findUser.push(data);
