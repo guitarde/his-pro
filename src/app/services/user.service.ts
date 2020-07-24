@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.type';
 import { HttpClient } from '@angular/common/http';
-import { URL_SERVICES } from '../config/config';
-
-
+import { environment } from '../../environments/environment';
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class UserService {
    * Retrieve all users.
    */
   getAllUsers() {
-    const URL = URL_SERVICES + '/users';
+    const URL = environment.URL_SERVICES + '/users';
     return this._httpClient.get(URL);
   }
 
@@ -27,7 +26,7 @@ export class UserService {
    * @param user data
    */
   newUser(user: User) {
-    const URL = URL_SERVICES + '/users';
+    const URL = environment.URL_SERVICES + '/users';
     return this._httpClient.post(URL, user);
   }
 
@@ -36,7 +35,7 @@ export class UserService {
    * @param id key of a register
    */
   public deleteUser(id: number) {
-    const URL = URL_SERVICES + '/users/' + id;
+    const URL = environment.URL_SERVICES + '/users/' + id;
     return this._httpClient.delete(URL);
   }
 
@@ -45,7 +44,7 @@ export class UserService {
    * @param user data
    */
   editUser(user: User) {
-    const URL = URL_SERVICES + '/users/' + user.id;
+    const URL = environment.URL_SERVICES + '/users/' + user.id;
     return this._httpClient.put(URL, user);
   }
 
@@ -54,7 +53,7 @@ export class UserService {
    * @param id of users
    */
   getUserById(id: number) {
-    const URL = URL_SERVICES + '/users/' + id;
+    const URL = environment.URL_SERVICES + '/users/' + id;
     return this._httpClient.get(URL);
   }
 

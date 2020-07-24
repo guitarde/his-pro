@@ -55,7 +55,7 @@ export class UserComponent implements OnInit {
 
 
   constructor(private _userverService: UserService, private _snackBar: MatSnackBar,
-    private _router: Router, private dialog: MatDialog, private ruteActiva: ActivatedRoute) {
+    private _router: Router, private dialog: MatDialog, private _activatedRoute: ActivatedRoute) {
 
   }
 
@@ -65,16 +65,15 @@ export class UserComponent implements OnInit {
 
 
   checkTypeOperations() {
-    this.ruteActiva.data.subscribe(event => {
+    this._activatedRoute.data.subscribe(event => {
       if (event.type === 'edit') {
         this.title = 'Edit user';
         this.editUser = true;
-        this._userverService.getUserById(this.ruteActiva.snapshot.params.id)
+        this._userverService.getUserById(this._activatedRoute.snapshot.params.id)
           .subscribe((resp: any) => {
             this.user = resp;
             this.evaluateTypeUser(this.user);
             this.action = 'edit';
-            console.log(this.user);
           });
       }
       if (event.type === 'new') {
@@ -204,14 +203,3 @@ export class UserComponent implements OnInit {
   }
 }
 
-
-/**
- * <mat-form-field appearance="fill">
-                <mat-label>NIF / DNI</mat-label>
-                <input pattern="[A-Za-z]{3}[0-9]{6}[A-Za-z]|[0-9]{8}[A-Za-z]" matInput name="identification"
-                    [(ngModel)]="user.nif" #identification="ngModel" id="identification">
-
-                <div *ngIf="identification.errors && (newUserFrom.submitted)">
-                    <p *ngIf="identification.errors.pattern">Email must contain at least the @ character</p>
-                </div>
- */
