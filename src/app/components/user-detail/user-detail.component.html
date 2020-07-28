@@ -4,7 +4,7 @@
             <mat-icon>add</mat-icon>
         </button>
 
-        <button class="right" routerLink="/users/{{user?.id}}/edit" mat-mini-fab color="" aria-label="icon button with a menu icon">
+        <button class="right" routerLink="/users/{{user?._id}}/edit" mat-mini-fab color="" aria-label="icon button with a menu icon">
             <mat-icon>edit</mat-icon>
         </button>
 
@@ -15,11 +15,11 @@
             <div class="row col-12">
                 <p class="col-6">Name: {{ user?.name }} </p>
                 <p class="col-3">Surname: {{ user?.surname }} </p>
-                <p class="col-3">Sexo: {{ user?.genero }}</p>
+                <p class="col-3">Gender: {{ user?.gender }}</p>
 
             </div>
             <div class="row col-12">
-                <p class="col-6">Lastname: {{ user?.lastName }}</p>
+                <p class="col-6">Lastname: {{ user?.lastname }}</p>
                 <p class="col-6">NIF/PASSPORT: {{ user?.identification }} </p>
             </div>
         </mat-card>

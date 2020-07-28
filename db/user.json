@@ -217,6 +217,79 @@
       },
       "lastName": "Atienza",
       "identification": "XSD"
+    },
+    {
+      "id": 9,
+      "name": "Luis 11",
+      "surname": "Reyna",
+      "lastname": "Chávez",
+      "identification": "54456779F",
+      "birthDate": "27-07-1996",
+      "genero": "H",
+      "profesional": {
+        "nColegiado": 23434,
+        "profesionalType": "ODCTOR"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Luis 11",
+      "surname": "Reyna",
+      "lastname": "Chávez",
+      "identification": "54456779F",
+      "birthDate": "27-07-1996",
+      "genero": "H",
+      "profesional": {
+        "nColegiado": 23434,
+        "profesionalType": "ODCTOR"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Luis 11",
+      "surname": "Reyna",
+      "lastname": "Chávez",
+      "identification": "54456779F",
+      "birthDate": "27-07-1996",
+      "genero": "H",
+      "profesional": {
+        "nColegiado": 23434,
+        "profesionalType": "ODCTOR"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Luis 11",
+      "surname": "Reyna",
+      "lastname": "Chávez",
+      "identification": "54456779F",
+      "birthDate": "27-07-1996",
+      "genero": "H",
+      "patient": {
+        "nch": "93673222",
+        "insurer": [
+          {
+            "cardNumber": "12",
+            "insurerName": "DER",
+            "insurerType": "HEALTH"
+          },
+          {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "DENTAL"
+          },
+          {
+            "cardNumber": "",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          },
+          {
+            "cardNumber": "ddddd",
+            "insurerName": "ddddd",
+            "insurerType": "FAMILY"
+          }
+        ]
+      }
     }
   ]
 }

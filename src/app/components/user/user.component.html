@@ -25,7 +25,7 @@
                         <div class="form-group col-md-4">
                             <mat-form-field class="form-field-input">
                                 <mat-label>Last Name</mat-label>
-                                <input matInput type="text" required [class.is-invalid]="lastname.invalid && lastname.touched" [(ngModel)]="user.lastName" name="lastname" #lastname="ngModel">
+                                <input matInput type="text" required [class.is-invalid]="lastname.invalid && lastname.touched" [(ngModel)]="user.lastname" name="lastname" #lastname="ngModel">
                             </mat-form-field>
                             <small *ngIf="lastname.invalid && lastname.touched" class="form-text text-danger">Last name is required</small>
                         </div>
@@ -46,9 +46,9 @@
                         </mat-form-field>
                     </div>
 
-                    <div class="form-group col-sm-6 form-group genero">
+                    <div class="form-group col-sm-6 form-group gender">
                         <h4>Genero</h4>
-                        <mat-radio-group aria-label="Select an option" [(ngModel)]="user.genero" #genero name="genero">
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="user.gender" #gender name="gender">
                             <mat-radio-button name="options" color="primary" value="H">MEN</mat-radio-button>
                             <mat-radio-button name="options" value="W">WOMAN</mat-radio-button>
                         </mat-radio-group>

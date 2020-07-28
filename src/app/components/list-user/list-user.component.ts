@@ -16,7 +16,7 @@ import { MessageComponent } from '../dialog/message/message.component';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'surName', 'lastname', 'genero', 'birthDate', 'identification', 'typeUser', 'options'];
+  displayedColumns: string[] = ['index', 'name', 'surName', 'lastname', 'gender', 'birthDate', 'identification', 'typeUser', 'options'];
 
   dataSource = new MatTableDataSource<User>();
   valueFindUser = '';
@@ -51,10 +51,10 @@ export class ListUserComponent implements OnInit {
 
   /**
    * check it if a Man or Woman
-   * @param genero of a User
+   * @param gender of a User
    */
-  generoUserColor(genero: string) {
-    return genero === 'H' ? 'accent' : 'primary';
+  genderUserColor(gender: string) {
+    return gender === 'H' ? 'accent' : 'primary';
   }
 
   /**
@@ -88,12 +88,12 @@ export class ListUserComponent implements OnInit {
 
   showUser(user: User) {
 
-    this._router.navigate([`/users/${user.id}`], { state: { user } });
+    this._router.navigate([`/users/${user._id}`], { state: { user } });
   }
 
   editUser(user: User) {
 
-    this._router.navigate([`/users/${user.id}/edit`], { state: { type: 'edit', user } });
+    this._router.navigate([`/users/${user._id}/edit`], { state: { type: 'edit', user } });
   }
 
   /**
@@ -107,7 +107,7 @@ export class ListUserComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: boolean) => {
         if (confirmado) {
-          this._userService.deleteUser(user.id).subscribe(resp => {
+          this._userService.deleteUser(user._id).subscribe(resp => {
             this.messageDialog('User delete successfuly');
             this.loadUsers();
           });
@@ -148,9 +148,7 @@ export class ListUserComponent implements OnInit {
       .subscribe((confirmado: boolean) => {
         if (confirmado) {
           this.dataSource.paginator = this.paginator;
-          this._userService.deleteAllDoctors().then(users => {
-            this.dataSource.data = users;
-          });
+          this._userService.deleteAllDoctors().subscribe(() => this.loadUsers());
         }
       });
   }

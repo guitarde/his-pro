@@ -28,10 +28,10 @@ export class UserComponent implements OnInit {
   activateTabUserProfesional = false;
 
   user: User = {
-    id: 0,
     name: '',
     surname: '',
-    genero: '',
+    lastname: '',
+    gender: '',
     address: {
       city: '',
       street: '',
@@ -96,7 +96,7 @@ export class UserComponent implements OnInit {
     if (this.editUser) {
       this._userverService.editUser(this.deletePropertyTypeUser(this.user))
         .subscribe(() => {
-          this._router.navigate([`/users/${this.user.id}`], { state: { user: this.user } });
+          this._router.navigate([`/users/${this.user._id}`], { state: { user: this.user } });
           this.messageDialog('Successful user editing');
         });
     } else {

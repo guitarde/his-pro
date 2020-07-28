@@ -44,7 +44,7 @@ export class UserService {
    * @param user data
    */
   editUser(user: User) {
-    const URL = environment.URL_SERVICES + '/users/' + user.id;
+    const URL = environment.URL_SERVICES + '/users/' + user._id;
     return this._httpClient.put(URL, user);
   }
 
@@ -59,9 +59,12 @@ export class UserService {
 
   deleteAllDoctors() {
 
-    return this.getAllUsers().toPromise().then((usersWithoutDoctor: User[]) => {
-      return usersWithoutDoctor.filter(prof => prof.professional?.professionalType !== 'DOCTOR');
-    });
+    const URL = environment.URL_SERVICES + '/users/doctors/del';
+    return  this._httpClient.delete(URL);
+
+    // return this.getAllUsers().toPromise().then((usersWithoutDoctor: User[]) => {
+    //   return usersWithoutDoctor.filter(prof => prof.professional?.professionalType !== 'DOCTOR');
+    // });
 
   }
 }
