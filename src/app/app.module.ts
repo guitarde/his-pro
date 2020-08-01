@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,12 +12,14 @@ import { UserComponent } from './components/user/user.component';
 import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component';
 import { UserTypePipe } from './pipes/user-type.pipe';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './components/dialog/confirm/confirm.component';
 import { MessageComponent } from './components/dialog/message/message.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -31,17 +33,19 @@ import { FooterComponent } from './components/footer/footer.component';
     ConfirmComponent,
     MessageComponent,
     UserDetailComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    APP_ROUTES,
     BrowserAnimationsModule, RouterModule,
     MaterialModule, HttpClientModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
 
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
