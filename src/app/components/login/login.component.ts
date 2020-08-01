@@ -37,9 +37,10 @@ export class LoginComponent implements OnInit {
         const user = new UserLogin(username, password);
         this._loginService.login(user).subscribe(value => {
           this._router.navigate(['/users']);
+          this.loginInvalid = false;
         });
       } catch (err) {
-        this.loginInvalid = true;
+        console.error(err);
       }
       this.loginInvalid = true;
 

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_SERVICES: 'http://localhost:3000'
+  URL_SERVICES: 'https://his-pro-back.herokuapp.com'
 };

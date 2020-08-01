@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_SERVICES: 'http://localhost:3000'
+  URL_SERVICES: 'https://his-pro-back.herokuapp.com'
 };
 
 /*
