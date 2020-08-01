@@ -9,11 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
-  constructor(private _httpClient: HttpClient) { }
-
   token: string;
-
   userLogin: UserLogin;
+
+  constructor(private _httpClient: HttpClient) {
+
+    this.loadStorage();
+  }
+
 
   isLogin() {
     return this.token.length > 4 ? true : false;
@@ -24,18 +27,33 @@ export class LoginService {
     const URL = environment.URL_SERVICES + '/auth/login';
     return this._httpClient.post(URL, user)
       .pipe(map((resp: any) => {
-        this.guardarStorage(resp.token, resp.user);
+        this.saveStorage(resp.token, resp.user);
         return true;
       }));
 
   }
 
-  guardarStorage(token: string, user: UserLogin) {
+
+  loadStorage() {
+
+    if (localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+    } else {
+      this.token = '';
+    }
+  }
+
+  saveStorage(token: string, user: UserLogin) {
 
     localStorage.setItem('token', token);
-    localStorage.setItem('usuario', JSON.stringify(user));
-
-    this.userLogin = user;
     this.token = token;
+
+  }
+
+  logout() {
+    this.token = '';
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+
   }
 }
