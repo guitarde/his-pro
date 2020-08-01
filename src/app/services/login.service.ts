@@ -27,7 +27,7 @@ export class LoginService {
     const URL = environment.URL_SERVICES + '/auth/login';
     return this._httpClient.post(URL, user)
       .pipe(map((resp: any) => {
-        this.saveStorage(resp.token, resp.user);
+        this.saveStorage(resp.token);
         return true;
       }));
 
@@ -43,7 +43,7 @@ export class LoginService {
     }
   }
 
-  saveStorage(token: string, user: UserLogin) {
+  saveStorage(token: string) {
 
     localStorage.setItem('token', token);
     this.token = token;
@@ -53,7 +53,5 @@ export class LoginService {
   logout() {
     this.token = '';
     localStorage.removeItem('token');
-    localStorage.removeItem('usuario');
-
   }
 }

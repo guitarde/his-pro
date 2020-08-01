@@ -18,14 +18,9 @@ const routes: Routes = [
       { path: 'users/new', component: UserComponent, data: { type: 'new', title: 'New User', description: 'Create a new user' } },
       { path: 'users/:id', component: UserDetailComponent, data: { type: 'view', title: 'Detail User', description: 'Details of a User' } },
       { path: 'users/:id/edit', component: UserComponent, data: { type: 'edit', title: 'Edit User', description: 'Edition of a User' } },
-
       { path: '**', component: NopagefoundComponent }
     ]
   },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const APP_ROUTES = RouterModule.forRoot(routes, { useHash: true });

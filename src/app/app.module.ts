@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { APP_ROUTES } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -38,7 +38,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    APP_ROUTES,
     BrowserAnimationsModule, RouterModule,
     MaterialModule, HttpClientModule,
     FormsModule, ReactiveFormsModule,

@@ -15,9 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private _router: Router,
-    private loginService: LoginService) { }
+    private _loginService: LoginService) { }
 
   async ngOnInit() {
 
@@ -35,16 +34,15 @@ export class LoginComponent implements OnInit {
         const username = this.form.get('email').value;
         const password = this.form.get('password').value;
 
-        const user = new UserLogin(
-          username,
-          password
-        );
-        this.loginService.login(user).subscribe(value => {
+        const user = new UserLogin(username, password);
+        this._loginService.login(user).subscribe(value => {
           this._router.navigate(['/users']);
         });
       } catch (err) {
         this.loginInvalid = true;
       }
+      this.loginInvalid = true;
+
     }
   }
 }
