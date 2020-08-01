@@ -7,7 +7,6 @@
         "dev": "ng serve",
         "build": "ng build --prod",
         "test": "ng test",
-        "db": "json-server -w db/user.json",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },
