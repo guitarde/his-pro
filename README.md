@@ -26,6 +26,19 @@ ng serve
 
 Una vez finalizado el paso anterior ya está listo para ser consultado el proyecto en la dirección  `http://localhost:4200/`.
 
+### Credenciales 
+
+EL sistema usa la authentication por JWT. Se habiltó usuarios por defecto en el sistema 
+
+```
+User: admin1@email.com
+Pass: 123456
+-----------------------
+
+User: user1@email.com
+Pass: 123456
+```
+
 
 ### Vista general 
 Aquí podemos ver visión general.
