@@ -39,8 +39,15 @@ User: user1@email.com
 Pass: 123456
 ```
 
+### Vista en Heroku
+Se hizo el despliegue de la aplicación HIS-PRO en el servicio que presta Heroku
+
+[His Pro](https://his-pro.herokuapp.com/#/login)
+
 
 ### Vista general 
 Aquí podemos ver visión general.
 
 ![alt text](./src/assets/img/picture.png)
+
+

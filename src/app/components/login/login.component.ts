@@ -12,6 +12,7 @@ import { UserLogin } from '../../models/user-login.model';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   public loginInvalid: boolean;
+  public loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     this.loginInvalid = false;
-
+    this.loading = true;
     if (this.form.valid) {
       try {
         const username = this.form.get('email').value;
@@ -36,13 +37,12 @@ export class LoginComponent implements OnInit {
 
         const user = new UserLogin(username, password);
         this._loginService.login(user).subscribe(value => {
-          this._router.navigate(['/users']);
           this.loginInvalid = false;
+          this._router.navigate(['/users']);
         });
       } catch (err) {
-        console.error(err);
+        this.loginInvalid = true;
       }
-      this.loginInvalid = true;
 
     }
   }

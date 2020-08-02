@@ -19,6 +19,8 @@
                 </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary">Login</button>
+
+            <mat-spinner class="full-width-input" *ngIf="loading"></mat-spinner>
         </form>
     </mat-card-content>
 </mat-card>
