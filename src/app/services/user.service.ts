@@ -17,7 +17,7 @@ export class UserService {
    * Retrieve all users.
    */
   getAllUsers() {
-    const URL = environment.URL_SERVICES + '/users';
+    const URL = environment.URL_SERVICES + '/persons';
     return this._httpClient.get(URL);
   }
 
@@ -26,7 +26,7 @@ export class UserService {
    * @param user data
    */
   newUser(user: User) {
-    const URL = environment.URL_SERVICES + '/users';
+    const URL = environment.URL_SERVICES + '/persons';
     return this._httpClient.post(URL, user);
   }
 
@@ -35,7 +35,7 @@ export class UserService {
    * @param id key of a register
    */
   public deleteUser(id: number) {
-    const URL = environment.URL_SERVICES + '/users/' + id;
+    const URL = environment.URL_SERVICES + '/persons/' + id;
     return this._httpClient.delete(URL);
   }
 
@@ -44,7 +44,7 @@ export class UserService {
    * @param user data
    */
   editUser(user: User) {
-    const URL = environment.URL_SERVICES + '/users/' + user._id;
+    const URL = environment.URL_SERVICES + '/persons/' + user._id;
     return this._httpClient.put(URL, user);
   }
 
@@ -53,13 +53,13 @@ export class UserService {
    * @param id of users
    */
   getUserById(id: number) {
-    const URL = environment.URL_SERVICES + '/users/' + id;
+    const URL = environment.URL_SERVICES + '/persons/' + id;
     return this._httpClient.get(URL);
   }
 
   deleteAllDoctors() {
 
-    const URL = environment.URL_SERVICES + '/users/doctors/del';
+    const URL = environment.URL_SERVICES + '/persons/doctors/del';
     return  this._httpClient.delete(URL);
 
     // return this.getAllUsers().toPromise().then((usersWithoutDoctor: User[]) => {
